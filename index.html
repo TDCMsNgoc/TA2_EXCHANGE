@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>English 2 - EXCHANGE | Trường Cao Đẳng Công Nghệ Thủ Đức (TDC)</title>
+  <link rel="icon" type="image/png" href="logo-tdc.png">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- ================= TOP HEADER ================= -->
+  <header class="header-wrapper">
+    <div class="header-container">
+      <!-- Top Left: TDC Logo & Title "English 2 - EXCHANGE" -->
+      <div class="brand-section">
+        <img src="logo-tdc.png" alt="Trường Cao Đẳng Công Nghệ Thủ Đức" class="tdc-logo-img" onerror="this.src='https://media.tdc.edu.vn/Media/1_TH1082/FolderFunc/202509/Images/tdc-20250922080814-e.png'">
+        <div class="brand-text">
+          <span class="brand-school">Trường Cao Đẳng Công Nghệ Thủ Đức</span>
+          <div class="brand-title">
+            English 2 - EXCHANGE
+            <span class="brand-badge">40 CÂU</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Top Right: Visitor Count, Timer & Submit Button -->
+      <div class="header-actions">
+        <!-- Live Visitor Counter -->
+        <div class="visitor-badge" onclick="openTeacherModal()" title="Bấm vào để xem thống kê chi tiết lượt truy cập dành cho Giảng viên">
+          <span class="live-dot"></span>
+          <span>Truy cập: <strong id="visitorCount">...</strong></span>
+        </div>
+
+        <!-- Timer Box -->
+        <div class="timer-box" id="timerBox" title="Thời gian làm bài">
+          <span class="timer-icon">⏱️</span>
+          <span id="timerDisplay">40:00</span>
+        </div>
+
+        <!-- Submit Button in Header -->
+        <button type="button" class="btn-header-submit" id="btnHeaderSubmit" onclick="promptSubmit()">
+          <span>✓</span> Nộp bài
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ================= MAIN LAYOUT ================= -->
+  <main class="main-layout">
+    
+    <!-- LEFT CONTENT: Questions & Results -->
+    <div class="content-left">
+      
+      <!-- Student Profile & Meta Information -->
+      <div class="exam-meta-card">
+        <div class="exam-meta-left">
+          <div class="exam-subject-name">Bài kiểm tra trắc nghiệm tiếng Anh giao tiếp (Communicative English)</div>
+          <div class="exam-meta-sub">Đề thi gồm 40 câu hỏi lựa chọn phương án đối thoại tình huống thích hợp nhất.</div>
+        </div>
+
+        <div class="student-info-tags">
+          <div class="student-tag">
+            <span>👤 SV:</span>
+            <strong id="studentNameDisplay">Đang tải...</strong>
+          </div>
+          <div class="student-tag">
+            <span>🆔 MSSV:</span>
+            <strong id="studentIdDisplay">Đang tải...</strong>
+          </div>
+          <div class="student-tag">
+            <span>🏫 Lớp:</span>
+            <strong id="studentClassDisplay">Đang tải...</strong>
+          </div>
+          <button type="button" class="btn-edit-student" onclick="openStudentModal()" title="Thay đổi thông tin sinh viên">
+            ✏️ Sửa
+          </button>
+        </div>
+      </div>
+
+      <!-- RESULTS SUMMARY CARD (Revealed after submission) -->
+      <section class="results-summary-card" id="resultsSummaryCard">
+        <h2 style="font-size: 1.5rem; margin-bottom: 20px; font-weight: 800; text-align: center;">
+          🏆 KẾT QUẢ BÀI THI: ENGLISH 2 - EXCHANGE
+        </h2>
+
+        <div class="results-grid">
+          <!-- Total Score -->
+          <div class="score-circle-container">
+            <div class="score-display" id="scoreRaw">0/40</div>
+            <div class="score-scale-10" id="scoreScale10">Điểm: 0.0 / 10</div>
+          </div>
+
+          <!-- Percentage -->
+          <div class="result-stat-box">
+            <div class="result-stat-value" id="scorePercentage">0%</div>
+            <div class="result-stat-label">Tỷ lệ chính xác</div>
+          </div>
+
+          <!-- Time Taken -->
+          <div class="result-stat-box">
+            <div class="result-stat-value" id="timeTaken" style="font-size: 1.35rem;">0 phút</div>
+            <div class="result-stat-label">Thời gian làm bài</div>
+          </div>
+
+          <!-- Detail Count -->
+          <div class="result-stat-box">
+            <div class="result-stat-value" style="color: #4ade80;" id="correctCount">0 câu</div>
+            <div class="result-stat-label">Số câu ĐÚNG (✓)</div>
+          </div>
+
+          <div class="result-stat-box">
+            <div class="result-stat-value" style="color: #f87171;" id="wrongCount">0 câu</div>
+            <div class="result-stat-label">Số câu SAI (✗)</div>
+          </div>
+        </div>
+
+        <div style="text-align: center; margin-top: 15px; font-size: 1.15rem; font-weight: 700;">
+          Xếp loại: <span id="scoreRating" style="color: #ffde59;">...</span>
+        </div>
+
+        <!-- Result Action Buttons -->
+        <div class="result-actions">
+          <button type="button" class="btn-result-action" onclick="printResults()">
+            🖨️ In / Lưu PDF bảng điểm
+          </button>
+          <button type="button" class="btn-result-action" onclick="exportResultsCSV()">
+            📥 Xuất bảng điểm CSV (Excel)
+          </button>
+          <button type="button" class="btn-result-action btn-retake" onclick="retakeQuiz()">
+            🔄 Làm lại bài thi
+          </button>
+        </div>
+      </section>
+
+      <!-- REVIEW FILTER BAR (Revealed after submission) -->
+      <div class="review-filter-bar" id="reviewFilterBar">
+        <span style="font-size: 0.9rem; font-weight: 700; color: var(--tdc-blue);">
+          🔍 Lọc câu hỏi xem lại:
+        </span>
+        <div class="filter-btn-group">
+          <button type="button" class="filter-pill active" id="filter_all" onclick="filterQuestions('all')">
+            Tất cả 40 câu
+          </button>
+          <button type="button" class="filter-pill" id="filter_correct" onclick="filterQuestions('correct')">
+            Chỉ câu ĐÚNG (✓)
+          </button>
+          <button type="button" class="filter-pill" id="filter_incorrect" onclick="filterQuestions('incorrect')">
+            Chỉ câu SAI (✗)
+          </button>
+        </div>
+      </div>
+
+      <!-- QUESTIONS CONTAINER (Rendered dynamically) -->
+      <div class="questions-list" id="questionsContainer">
+        <!-- Injected via JavaScript -->
+      </div>
+
+    </div>
+
+    <!-- RIGHT SIDEBAR: QUESTION PALETTE -->
+    <aside class="sidebar-right">
+      <div class="sidebar-sticky">
+        <div class="sidebar-title">
+          <span>Bảng điều hướng câu hỏi</span>
+          <span style="font-size: 0.8rem; color: var(--text-muted); font-weight: normal;">40 câu</span>
+        </div>
+
+        <div class="progress-info">
+          <div class="progress-text">
+            <span id="progressText">Đã làm: 0 / 40 câu (0%)</span>
+          </div>
+          <div class="progress-bar-bg">
+            <div class="progress-bar-fill" id="progressBarFill"></div>
+          </div>
+        </div>
+
+        <div class="palette-legend">
+          <div class="legend-item">
+            <div class="legend-dot unanswered"></div>
+            <span>Chưa làm</span>
+          </div>
+          <div class="legend-item">
+            <div class="legend-dot answered"></div>
+            <span>Đã chọn</span>
+          </div>
+          <div class="legend-item">
+            <div class="legend-dot flagged"></div>
+            <span>Đánh dấu ★</span>
+          </div>
+        </div>
+
+        <!-- 40 Grid Buttons -->
+        <div class="questions-grid" id="questionsGrid">
+          <!-- Injected via JavaScript -->
+        </div>
+
+        <!-- Big Submit Button in Sidebar -->
+        <button type="button" class="sidebar-submit-btn" id="btnSidebarSubmit" onclick="promptSubmit()">
+          NỘP BÀI THI
+        </button>
+      </div>
+    </aside>
+
+  </main>
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="app-footer">
+    <div class="footer-content">
+      <div class="footer-school">TRƯỜNG CAO ĐẲNG CÔNG NGHỆ THỦ ĐỨC (TDC)</div>
+      <div>Học phần: <strong>English 2 - EXCHANGE</strong> | Hệ thống trắc nghiệm và ôn luyện trực tuyến</div>
+      <div style="margin-top: 5px;">
+        <button type="button" onclick="openTeacherModal()" style="background: none; border: none; color: var(--tdc-blue-light); text-decoration: underline; cursor: pointer; font-size: 0.82rem;">
+          📊 Quản trị viên & Giảng viên: Xem số liệu truy cập & Hướng dẫn
+        </button>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ================= MODAL: STUDENT INFO ================= -->
+  <div class="modal-overlay" id="studentModal">
+    <div class="modal-box">
+      <div class="modal-header">
+        <div class="modal-title">
+          <span>📝 Thông tin sinh viên</span>
+        </div>
+        <button type="button" class="modal-close-btn" onclick="closeStudentModal()">&times;</button>
+      </div>
+      <div class="modal-body">
+        <p style="margin-bottom: 15px; color: #64748b; font-size: 0.9rem;">
+          Vui lòng nhập thông tin để bảng điểm và kết quả của bạn được lưu trữ chính xác.
+        </p>
+        <form onsubmit="saveStudentInfo(event)">
+          <div class="form-group">
+            <label for="inputStudentName">Họ và tên sinh viên *</label>
+            <input type="text" id="inputStudentName" placeholder="Ví dụ: Nguyễn Văn An" required>
+          </div>
+          <div class="form-group">
+            <label for="inputStudentId">Mã số sinh viên (MSSV) *</label>
+            <input type="text" id="inputStudentId" placeholder="Ví dụ: 22CDTH01" required>
+          </div>
+          <div class="form-group">
+            <label for="inputStudentClass">Lớp học phần *</label>
+            <input type="text" id="inputStudentClass" placeholder="Ví dụ: CDTH22A" required>
+          </div>
+          <div class="modal-actions" style="margin-top: 20px;">
+            <button type="button" class="btn-secondary" onclick="closeStudentModal()">Bỏ qua</button>
+            <button type="submit" class="btn-primary">Lưu & Bắt đầu làm bài</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= MODAL: SUBMISSION CONFIRMATION ================= -->
+  <div class="modal-overlay" id="submitConfirmModal">
+    <div class="modal-box">
+      <div class="modal-header">
+        <div class="modal-title">
+          <span>Xác nhận nộp bài</span>
+        </div>
+        <button type="button" class="modal-close-btn" onclick="closeSubmitModal()">&times;</button>
+      </div>
+      <div class="modal-body" id="submitModalBody">
+        <!-- Injected via JavaScript -->
+      </div>
+      <div class="modal-actions">
+        <button type="button" class="btn-secondary" onclick="closeSubmitModal()">Tiếp tục làm bài</button>
+        <button type="button" class="btn-primary" style="background: var(--tdc-orange);" onclick="confirmSubmit()">
+          Xác nhận Nộp bài
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= MODAL: TEACHER & VISITOR STATS ================= -->
+  <div class="modal-overlay" id="teacherModal">
+    <div class="modal-box" style="max-width: 600px;">
+      <div class="modal-header">
+        <div class="modal-title">
+          <span>📊 Dành cho Giảng viên & Quản trị</span>
+        </div>
+        <button type="button" class="modal-close-btn" onclick="closeTeacherModal()">&times;</button>
+      </div>
+      <div class="modal-body">
+        
+        <!-- Live Visitor Stat Box -->
+        <div style="background: #eff6ff; border: 1.5px solid #bfdbfe; border-radius: 8px; padding: 15px; margin-bottom: 18px; text-align: center;">
+          <div style="font-size: 0.9rem; color: #1e40af; font-weight: 600;">Tổng số lượt sinh viên đã truy cập link:</div>
+          <div style="font-size: 2.5rem; font-weight: 900; color: #1d4ed8; line-height: 1.2; margin: 6px 0;" id="teacherVisitorTotal">...</div>
+          <div style="font-size: 0.8rem; color: #60a5fa;">Được đếm tự động theo thời gian thực mỗi khi có lượt truy cập mới.</div>
+        </div>
+
+        <h4 style="font-size: 0.95rem; font-weight: 700; color: var(--tdc-blue); margin-bottom: 8px;">
+          🔗 Link kiểm tra lượt truy cập trực tiếp từ API:
+        </h4>
+        <div style="background: #f1f5f9; padding: 10px; border-radius: 6px; font-family: monospace; font-size: 0.8rem; word-break: break-all; margin-bottom: 16px; border: 1px solid #cbd5e1;">
+          <a href="https://api.counterapi.dev/v1/tdc-english2-exchange/page-visits" target="_blank" style="color: #2563eb; text-decoration: none;">
+            https://api.counterapi.dev/v1/tdc-english2-exchange/page-visits
+          </a>
+        </div>
+
+        <h4 style="font-size: 0.95rem; font-weight: 700; color: var(--tdc-blue); margin-bottom: 8px;">
+          📋 Lịch sử nộp bài gần đây trên trình duyệt này:
+        </h4>
+        <div id="teacherSubmissionsList" style="max-height: 180px; overflow-y: auto; margin-bottom: 15px;">
+          <!-- Injected via JavaScript -->
+        </div>
+
+        <div style="background: #fffbeb; border: 1px solid #fde68a; border-radius: 6px; padding: 10px 14px; font-size: 0.82rem; color: #92400e;">
+          💡 <strong>Mẹo cho Giảng viên:</strong> Để nhận bảng điểm tự động của từng sinh viên vào Google Trang Tính (Google Sheets), Thầy/Cô chỉ cần tạo một Google Form ngắn hoặc chia sẻ link trang web này cho sinh viên làm bài và yêu cầu tải file kết quả CSV hoặc bản in PDF nộp lại!
+        </div>
+
+      </div>
+      <div class="modal-actions">
+        <button type="button" class="btn-primary" onclick="closeTeacherModal()">Đóng cửa sổ</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="js/questions.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
