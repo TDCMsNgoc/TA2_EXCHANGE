@@ -9,20 +9,22 @@
 /* ==========================================================================
    CSS STYLES - ENGLISH 2: EXCHANGE (40 MULTIPLE-CHOICE QUESTIONS)
    Trường Cao đẳng Công nghệ Thủ Đức (TDC)
+   Giao diện chuẩn theo mẫu tham khảo
    ========================================================================== */
 
 :root {
-  --tdc-blue: #003366;
-  --tdc-blue-dark: #002244;
-  --tdc-blue-light: #0d5aa7;
-  --tdc-orange: #ff6600;
-  --tdc-orange-hover: #e55b00;
-  --tdc-orange-light: #fff2e6;
-  --bg-page: #f4f7fb;
+  --tdc-navy-dark: #002244;
+  --tdc-navy: #003366;
+  --tdc-navy-light: #004b87;
+  --tdc-amber: #f59e0b;
+  --tdc-amber-hover: #d97706;
+  --tdc-yellow: #facc15;
+  --bg-page: #f1f5f9;
   --bg-card: #ffffff;
   --text-main: #1e293b;
   --text-muted: #64748b;
-  --border-color: #e2e8f0;
+  --border-color: #cbd5e1;
+  --border-light: #e2e8f0;
   --success: #10b981;
   --success-bg: #ecfdf5;
   --success-border: #a7f3d0;
@@ -34,9 +36,10 @@
   --radius-sm: 8px;
   --radius-md: 12px;
   --radius-lg: 16px;
+  --radius-pill: 30px;
   --shadow-sm: 0 1px 3px rgba(0,0,0,0.08);
-  --shadow-md: 0 4px 12px rgba(0,0,0,0.06);
-  --shadow-lg: 0 10px 25px rgba(0,0,0,0.1);
+  --shadow-md: 0 4px 12px rgba(0,0,0,0.08);
+  --shadow-lg: 0 10px 25px rgba(0,0,0,0.15);
   --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
 }
 
@@ -54,105 +57,150 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-/* ================= TOP HEADER ================= */
+/* ================= TOP HEADER (MATCHES USER REFERENCE) ================= */
 .header-wrapper {
-  background: #ffffff;
-  border-bottom: 2px solid var(--border-color);
+  background: linear-gradient(90deg, #002b55 0%, #003e75 40%, #004e8c 70%, #00386b 100%);
+  border-bottom: 2px solid #001f3f;
   position: sticky;
   top: 0;
   z-index: 1000;
-  box-shadow: var(--shadow-sm);
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.28);
+  padding: 7px 0;
 }
 
 .header-container {
-  max-width: 1300px;
+  max-width: 1400px;
   margin: 0 auto;
-  padding: 10px 20px;
+  padding: 0 16px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 15px;
+  gap: 12px;
+  flex-wrap: wrap;
 }
 
+/* Left Brand Area */
 .brand-section {
   display: flex;
   align-items: center;
-  gap: 16px;
-  text-decoration: none;
+  gap: 12px;
+}
+
+.logo-white-card {
+  background: #ffffff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  height: 42px;
 }
 
 .tdc-logo-img {
-  height: 52px;
+  height: 36px;
   width: auto;
   object-fit: contain;
-  transition: transform 0.2s;
 }
 
-.brand-text {
-  display: flex;
-  flex-direction: column;
-}
-
-.brand-school {
-  font-size: 0.8rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  color: var(--tdc-blue);
-  letter-spacing: 0.5px;
-}
-
-.brand-title {
-  font-size: 1.45rem;
-  font-weight: 800;
-  color: var(--tdc-orange);
-  line-height: 1.2;
+.brand-title-wrap {
   display: flex;
   align-items: center;
   gap: 8px;
 }
 
-.brand-badge {
-  background: var(--tdc-blue);
-  color: #fff;
-  font-size: 0.72rem;
-  padding: 2px 8px;
-  border-radius: 20px;
-  font-weight: 600;
+.brand-main-title {
+  color: #ffffff;
+  font-size: 1.15rem;
+  font-weight: 800;
   letter-spacing: 0.5px;
+  white-space: nowrap;
 }
 
-/* Header Right: Timer & Counters */
-.header-actions {
+.badge-ta2 {
+  background: var(--tdc-amber);
+  color: #0f172a;
+  font-size: 0.72rem;
+  font-weight: 900;
+  padding: 2px 7px;
+  border-radius: 6px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+/* Controls Area (Right) */
+.header-controls {
   display: flex;
   align-items: center;
-  gap: 14px;
+  gap: 10px;
+  flex-wrap: wrap;
 }
 
-.visitor-badge {
+/* Time & Progress Pill */
+.status-pill-group {
+  background: rgba(0, 18, 45, 0.55);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: var(--radius-pill);
+  padding: 6px 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: #ffffff;
+  font-size: 0.88rem;
+  backdrop-filter: blur(4px);
+}
+
+.status-pill-item {
   display: flex;
   align-items: center;
   gap: 6px;
-  background: #f1f5f9;
-  border: 1px solid var(--border-color);
-  padding: 6px 12px;
-  border-radius: 30px;
-  font-size: 0.82rem;
-  font-weight: 600;
-  color: var(--text-muted);
+}
+
+.status-divider {
+  width: 1px;
+  height: 16px;
+  background: rgba(255, 255, 255, 0.25);
+}
+
+.timer-digits {
+  color: #ffffff;
+  font-weight: 800;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 1rem;
+  letter-spacing: 0.5px;
+}
+
+.highlight-val {
+  color: var(--tdc-yellow);
+  font-weight: 800;
+}
+
+/* Visitor Counter Pill */
+.visitor-pill {
+  background: rgba(0, 18, 45, 0.55);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: var(--radius-pill);
+  padding: 6px 14px;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  color: #ffffff;
+  font-size: 0.88rem;
+  backdrop-filter: blur(4px);
   cursor: pointer;
   transition: all 0.2s;
 }
 
-.visitor-badge:hover {
-  background: #e2e8f0;
-  color: var(--tdc-blue);
+.visitor-pill:hover {
+  background: rgba(0, 28, 65, 0.75);
+  border-color: rgba(255, 255, 255, 0.35);
 }
 
-.visitor-badge .live-dot {
+.live-green-dot {
   width: 8px;
   height: 8px;
+  background-color: #10b981;
   border-radius: 50%;
-  background-color: var(--success);
   display: inline-block;
   box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.3);
   animation: pulseDot 2s infinite;
@@ -160,163 +208,145 @@ body {
 
 @keyframes pulseDot {
   0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7); }
-  70% { transform: scale(1); box-shadow: 0 0 0 6px rgba(16, 185, 129, 0); }
+  70% { transform: scale(1); box-shadow: 0 0 0 5px rgba(16, 185, 129, 0); }
   100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
 }
 
-.timer-box {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  background: var(--tdc-blue-dark);
-  color: #ffffff;
-  padding: 7px 16px;
-  border-radius: var(--radius-sm);
-  font-family: 'Courier New', Courier, monospace;
-  font-size: 1.25rem;
-  font-weight: 700;
-  box-shadow: 0 2px 6px rgba(0, 34, 68, 0.2);
-}
-
-.timer-box.timer-warning {
-  background: #dc2626;
-  animation: blinkTimer 1s infinite alternate;
-}
-
-@keyframes blinkTimer {
-  from { opacity: 1; }
-  to { opacity: 0.75; }
-}
-
-.timer-icon {
-  font-size: 1.1rem;
-}
-
-.btn-header-submit {
-  background: var(--tdc-orange);
-  color: #fff;
+/* Yellow Button: Nhập Họ tên & MSSV */
+.btn-student-info {
+  background: var(--tdc-amber);
+  color: #0f172a;
   border: none;
-  padding: 8px 18px;
-  font-size: 0.95rem;
+  border-radius: var(--radius-pill);
+  padding: 6px 16px;
+  font-size: 0.88rem;
   font-weight: 700;
-  border-radius: var(--radius-sm);
-  cursor: pointer;
   display: flex;
   align-items: center;
   gap: 6px;
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(245, 158, 11, 0.3);
   transition: all 0.2s;
-  box-shadow: 0 2px 5px rgba(255, 102, 0, 0.3);
+  white-space: nowrap;
 }
 
-.btn-header-submit:hover {
-  background: var(--tdc-orange-hover);
+.btn-student-info:hover {
+  background: var(--tdc-amber-hover);
+  transform: translateY(-1px);
+}
+
+/* Translucent Button: Thống kê */
+.btn-stats {
+  background: rgba(255, 255, 255, 0.16);
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.26);
+  border-radius: var(--radius-pill);
+  padding: 6px 16px;
+  font-size: 0.88rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  backdrop-filter: blur(4px);
+  transition: all 0.2s;
+  white-space: nowrap;
+}
+
+.btn-stats:hover {
+  background: rgba(255, 255, 255, 0.26);
+  border-color: rgba(255, 255, 255, 0.4);
   transform: translateY(-1px);
 }
 
 /* ================= MAIN CONTAINER ================= */
 .main-layout {
-  max-width: 1300px;
-  margin: 20px auto;
-  padding: 0 20px;
+  max-width: 1400px;
+  margin: 18px auto;
+  padding: 0 16px;
   display: grid;
   grid-template-columns: 1fr 340px;
-  gap: 25px;
+  gap: 22px;
   align-items: start;
 }
 
 /* Student & Exam Info Card */
 .exam-meta-card {
   background: #ffffff;
-  border: 1px solid var(--border-color);
+  border: 1px solid var(--border-light);
   border-radius: var(--radius-md);
-  padding: 16px 20px;
-  margin-bottom: 20px;
+  padding: 14px 18px;
+  margin-bottom: 18px;
   box-shadow: var(--shadow-sm);
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
-  gap: 15px;
-  border-left: 5px solid var(--tdc-orange);
+  gap: 12px;
+  border-left: 5px solid var(--tdc-amber);
 }
 
 .exam-meta-left {
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 3px;
 }
 
 .exam-subject-name {
-  font-size: 1.15rem;
+  font-size: 1.12rem;
   font-weight: 700;
-  color: var(--tdc-blue);
+  color: var(--tdc-navy);
 }
 
 .exam-meta-sub {
-  font-size: 0.85rem;
+  font-size: 0.84rem;
   color: var(--text-muted);
 }
 
 .student-info-tags {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 8px;
   flex-wrap: wrap;
 }
 
 .student-tag {
   background: #f8fafc;
-  border: 1px solid var(--border-color);
-  padding: 5px 12px;
+  border: 1px solid var(--border-light);
+  padding: 4px 10px;
   border-radius: 6px;
-  font-size: 0.85rem;
+  font-size: 0.83rem;
   color: var(--text-main);
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: 5px;
 }
 
 .student-tag strong {
-  color: var(--tdc-blue);
+  color: var(--tdc-navy);
 }
 
-.btn-edit-student {
-  background: none;
-  border: 1px dashed var(--tdc-blue-light);
-  color: var(--tdc-blue-light);
-  padding: 4px 10px;
-  border-radius: 6px;
-  font-size: 0.8rem;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.2s;
-}
-
-.btn-edit-student:hover {
-  background: #eff6ff;
-}
-
-/* ================= RESULTS SUMMARY BANNER ================= */
+/* ================= RESULTS SUMMARY BANNER (AFTER SUBMIT) ================= */
 .results-summary-card {
-  background: linear-gradient(135deg, #003366 0%, #0d5aa7 100%);
+  background: linear-gradient(135deg, #002b55 0%, #004e8c 100%);
   color: #ffffff;
   border-radius: var(--radius-lg);
-  padding: 28px;
-  margin-bottom: 25px;
+  padding: 24px;
+  margin-bottom: 22px;
   box-shadow: var(--shadow-lg);
-  display: none; /* Revealed after submission */
+  display: none;
   animation: slideDown 0.4s ease-out;
 }
 
 @keyframes slideDown {
-  from { opacity: 0; transform: translateY(-20px); }
+  from { opacity: 0; transform: translateY(-15px); }
   to { opacity: 1; transform: translateY(0); }
 }
 
 .results-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 16px;
   align-items: center;
   text-align: center;
 }
@@ -329,16 +359,16 @@ body {
 }
 
 .score-display {
-  font-size: 3rem;
+  font-size: 2.8rem;
   font-weight: 900;
   line-height: 1;
-  color: #ffde59;
-  text-shadow: 0 2px 10px rgba(0,0,0,0.2);
+  color: var(--tdc-yellow);
+  text-shadow: 0 2px 8px rgba(0,0,0,0.25);
 }
 
 .score-scale-10 {
-  font-size: 1.15rem;
-  font-weight: 600;
+  font-size: 1.1rem;
+  font-weight: 700;
   margin-top: 4px;
   color: #e0f2fe;
 }
@@ -346,18 +376,18 @@ body {
 .result-stat-box {
   background: rgba(255, 255, 255, 0.12);
   backdrop-filter: blur(8px);
-  padding: 16px;
+  padding: 14px;
   border-radius: var(--radius-md);
   border: 1px solid rgba(255, 255, 255, 0.18);
 }
 
 .result-stat-value {
-  font-size: 1.8rem;
+  font-size: 1.6rem;
   font-weight: 800;
 }
 
 .result-stat-label {
-  font-size: 0.85rem;
+  font-size: 0.82rem;
   opacity: 0.9;
   margin-top: 2px;
 }
@@ -367,18 +397,18 @@ body {
   gap: 10px;
   justify-content: center;
   flex-wrap: wrap;
-  margin-top: 20px;
-  padding-top: 20px;
+  margin-top: 18px;
+  padding-top: 18px;
   border-top: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .btn-result-action {
   background: #ffffff;
-  color: var(--tdc-blue);
+  color: var(--tdc-navy);
   border: none;
-  padding: 9px 20px;
+  padding: 8px 18px;
   border-radius: var(--radius-sm);
-  font-size: 0.9rem;
+  font-size: 0.88rem;
   font-weight: 700;
   cursor: pointer;
   display: flex;
@@ -393,21 +423,21 @@ body {
 }
 
 .btn-retake {
-  background: var(--tdc-orange);
-  color: #fff;
+  background: var(--tdc-amber);
+  color: #0f172a;
 }
 
 .btn-retake:hover {
-  background: var(--tdc-orange-hover);
+  background: var(--tdc-amber-hover);
 }
 
-/* ================= FILTER BAR (AFTER SUBMIT) ================= */
+/* ================= FILTER BAR ================= */
 .review-filter-bar {
   background: #ffffff;
-  border: 1px solid var(--border-color);
+  border: 1px solid var(--border-light);
   border-radius: var(--radius-md);
-  padding: 12px 18px;
-  margin-bottom: 20px;
+  padding: 10px 16px;
+  margin-bottom: 18px;
   display: none;
   align-items: center;
   justify-content: space-between;
@@ -425,9 +455,9 @@ body {
 .filter-pill {
   border: 1px solid var(--border-color);
   background: #f8fafc;
-  padding: 6px 14px;
+  padding: 5px 12px;
   border-radius: 20px;
-  font-size: 0.85rem;
+  font-size: 0.83rem;
   font-weight: 600;
   color: var(--text-main);
   cursor: pointer;
@@ -435,27 +465,27 @@ body {
 }
 
 .filter-pill.active {
-  background: var(--tdc-blue);
+  background: var(--tdc-navy);
   color: #fff;
-  border-color: var(--tdc-blue);
+  border-color: var(--tdc-navy);
 }
 
 /* ================= QUESTION CARDS ================= */
 .questions-list {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 18px;
 }
 
 .question-card {
   background: var(--bg-card);
-  border: 1px solid var(--border-color);
+  border: 1px solid var(--border-light);
   border-radius: var(--radius-md);
-  padding: 22px;
+  padding: 20px;
   box-shadow: var(--shadow-sm);
   transition: border-color 0.2s, box-shadow 0.2s;
   position: relative;
-  scroll-margin-top: 90px;
+  scroll-margin-top: 80px;
 }
 
 .question-card:hover {
@@ -463,7 +493,7 @@ body {
 }
 
 .question-card.flagged {
-  border-left: 5px solid var(--warning);
+  border-left: 5px solid var(--tdc-amber);
 }
 
 .question-card.correct-card {
@@ -484,15 +514,15 @@ body {
 }
 
 .question-num-badge {
-  font-size: 0.92rem;
+  font-size: 0.9rem;
   font-weight: 700;
-  color: var(--tdc-blue);
+  color: var(--tdc-navy);
   background: #eef4fb;
-  padding: 4px 12px;
+  padding: 3px 10px;
   border-radius: 6px;
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: 5px;
 }
 
 .question-actions-right {
@@ -506,8 +536,8 @@ body {
   border: 1px solid var(--border-color);
   color: var(--text-muted);
   border-radius: 6px;
-  padding: 4px 10px;
-  font-size: 0.78rem;
+  padding: 3px 8px;
+  font-size: 0.76rem;
   font-weight: 600;
   cursor: pointer;
   display: flex;
@@ -523,9 +553,9 @@ body {
 }
 
 .question-status-tag {
-  font-size: 0.8rem;
+  font-size: 0.78rem;
   font-weight: 700;
-  padding: 3px 10px;
+  padding: 3px 8px;
   border-radius: 20px;
   display: none;
 }
@@ -546,23 +576,23 @@ body {
 
 /* Question Dialogue Text */
 .question-dialogue {
-  font-size: 1.08rem;
+  font-size: 1.05rem;
   font-weight: 600;
   color: #0f172a;
   background: #f8fafc;
-  padding: 14px 18px;
+  padding: 12px 16px;
   border-radius: var(--radius-sm);
   border: 1px solid #edf2f7;
   white-space: pre-line;
-  margin-bottom: 16px;
-  line-height: 1.6;
+  margin-bottom: 14px;
+  line-height: 1.55;
 }
 
 /* Options Grid */
 .options-group {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 10px;
+  gap: 9px;
 }
 
 @media (min-width: 768px) {
@@ -575,8 +605,8 @@ body {
   display: flex;
   align-items: center;
   gap: 12px;
-  padding: 12px 16px;
-  border: 1.5px solid var(--border-color);
+  padding: 11px 14px;
+  border: 1.5px solid var(--border-light);
   border-radius: var(--radius-sm);
   background: #ffffff;
   cursor: pointer;
@@ -591,7 +621,7 @@ body {
 }
 
 .option-item.selected {
-  border-color: var(--tdc-blue);
+  border-color: var(--tdc-navy);
   background: #f0f7ff;
 }
 
@@ -600,28 +630,28 @@ body {
 }
 
 .option-key {
-  width: 28px;
-  height: 28px;
+  width: 26px;
+  height: 26px;
   border-radius: 50%;
   border: 1.5px solid #94a3b8;
   display: flex;
   align-items: center;
   justify-content: center;
   font-weight: 700;
-  font-size: 0.85rem;
+  font-size: 0.82rem;
   color: #475569;
   flex-shrink: 0;
   transition: all 0.2s;
 }
 
 .option-item.selected .option-key {
-  border-color: var(--tdc-blue);
-  background: var(--tdc-blue);
+  border-color: var(--tdc-navy);
+  background: var(--tdc-navy);
   color: #ffffff;
 }
 
 .option-text {
-  font-size: 0.98rem;
+  font-size: 0.95rem;
   color: #1e293b;
   flex: 1;
 }
@@ -653,12 +683,12 @@ body {
   color: #ffffff !important;
 }
 
-/* Solution Explanation & Translation Box (Hidden initially) */
+/* Solution Explanation & Translation Box */
 .solution-box {
-  margin-top: 18px;
-  padding-top: 16px;
-  border-top: 1px dashed var(--border-color);
-  display: none; /* Revealed after submit */
+  margin-top: 16px;
+  padding-top: 14px;
+  border-top: 1px dashed var(--border-light);
+  display: none;
   animation: fadeIn 0.3s ease-in;
 }
 
@@ -671,26 +701,26 @@ body {
   background: #f0fdf4;
   border: 1px solid #bbf7d0;
   border-radius: var(--radius-sm);
-  padding: 14px 16px;
-  margin-bottom: 12px;
+  padding: 12px 15px;
+  margin-bottom: 10px;
 }
 
 .section-badge {
   display: inline-flex;
   align-items: center;
   gap: 5px;
-  font-size: 0.82rem;
+  font-size: 0.8rem;
   font-weight: 700;
   text-transform: uppercase;
   color: #15803d;
-  margin-bottom: 8px;
+  margin-bottom: 6px;
   letter-spacing: 0.5px;
 }
 
 .explanation-text {
-  font-size: 0.92rem;
+  font-size: 0.9rem;
   color: #14532d;
-  line-height: 1.6;
+  line-height: 1.55;
   white-space: pre-line;
 }
 
@@ -698,35 +728,35 @@ body {
   background: #f8fafc;
   border: 1px solid #e2e8f0;
   border-radius: var(--radius-sm);
-  padding: 14px 16px;
+  padding: 12px 15px;
 }
 
 .translation-section .section-badge {
-  color: var(--tdc-blue);
+  color: var(--tdc-navy);
 }
 
 .translation-text {
-  font-size: 0.92rem;
+  font-size: 0.9rem;
   color: #334155;
-  line-height: 1.6;
+  line-height: 1.55;
   white-space: pre-line;
 }
 
-/* ================= RIGHT SIDEBAR: QUESTION PALETTE ================= */
+/* ================= RIGHT SIDEBAR ================= */
 .sidebar-sticky {
   position: sticky;
-  top: 85px;
+  top: 75px;
   background: var(--bg-card);
-  border: 1px solid var(--border-color);
+  border: 1px solid var(--border-light);
   border-radius: var(--radius-md);
-  padding: 20px;
+  padding: 18px;
   box-shadow: var(--shadow-sm);
 }
 
 .sidebar-title {
-  font-size: 1.05rem;
+  font-size: 1rem;
   font-weight: 700;
-  color: var(--tdc-blue);
+  color: var(--tdc-navy);
   margin-bottom: 12px;
   display: flex;
   align-items: center;
@@ -734,21 +764,21 @@ body {
 }
 
 .progress-info {
-  margin-bottom: 14px;
+  margin-bottom: 12px;
 }
 
 .progress-text {
   display: flex;
   justify-content: space-between;
-  font-size: 0.85rem;
+  font-size: 0.82rem;
   font-weight: 600;
   color: var(--text-muted);
-  margin-bottom: 6px;
+  margin-bottom: 5px;
 }
 
 .progress-bar-bg {
   width: 100%;
-  height: 8px;
+  height: 7px;
   background: #e2e8f0;
   border-radius: 10px;
   overflow: hidden;
@@ -757,37 +787,37 @@ body {
 .progress-bar-fill {
   height: 100%;
   width: 0%;
-  background: linear-gradient(90deg, var(--tdc-blue) 0%, var(--tdc-orange) 100%);
+  background: linear-gradient(90deg, var(--tdc-navy) 0%, var(--tdc-amber) 100%);
   transition: width 0.3s ease;
 }
 
 .palette-legend {
   display: flex;
-  gap: 12px;
+  gap: 10px;
   flex-wrap: wrap;
-  font-size: 0.75rem;
+  font-size: 0.74rem;
   color: var(--text-muted);
-  margin-bottom: 14px;
-  padding-bottom: 12px;
-  border-bottom: 1px solid var(--border-color);
+  margin-bottom: 12px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--border-light);
 }
 
 .legend-item {
   display: flex;
   align-items: center;
-  gap: 5px;
+  gap: 4px;
 }
 
 .legend-dot {
-  width: 12px;
-  height: 12px;
+  width: 11px;
+  height: 11px;
   border-radius: 3px;
-  border: 1px solid var(--border-color);
+  border: 1px solid var(--border-light);
 }
 
-.legend-dot.answered { background: var(--tdc-blue); border-color: var(--tdc-blue); }
+.legend-dot.answered { background: var(--tdc-navy); border-color: var(--tdc-navy); }
 .legend-dot.unanswered { background: #f8fafc; }
-.legend-dot.flagged { background: var(--warning); border-color: var(--warning); }
+.legend-dot.flagged { background: var(--tdc-amber); border-color: var(--tdc-amber); }
 .legend-dot.correct { background: var(--success); border-color: var(--success); }
 .legend-dot.incorrect { background: var(--danger); border-color: var(--danger); }
 
@@ -795,10 +825,10 @@ body {
 .questions-grid {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
-  gap: 8px;
-  max-height: 380px;
+  gap: 7px;
+  max-height: 360px;
   overflow-y: auto;
-  padding-right: 4px;
+  padding-right: 3px;
 }
 
 .grid-btn {
@@ -806,9 +836,9 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 0.85rem;
+  font-size: 0.83rem;
   font-weight: 700;
-  border: 1.5px solid var(--border-color);
+  border: 1.5px solid var(--border-light);
   background: #f8fafc;
   border-radius: 6px;
   color: #475569;
@@ -823,25 +853,24 @@ body {
 }
 
 .grid-btn.answered {
-  background: var(--tdc-blue);
+  background: var(--tdc-navy);
   color: #ffffff;
-  border-color: var(--tdc-blue);
+  border-color: var(--tdc-navy);
 }
 
 .grid-btn.flagged::after {
   content: "★";
   position: absolute;
   top: 1px;
-  right: 3px;
-  font-size: 0.65rem;
-  color: var(--warning);
+  right: 2px;
+  font-size: 0.62rem;
+  color: var(--tdc-amber);
 }
 
 .grid-btn.answered.flagged::after {
-  color: #ffde59;
+  color: var(--tdc-yellow);
 }
 
-/* Post-submission grid states */
 .grid-btn.grid-correct {
   background: var(--success) !important;
   color: #ffffff !important;
@@ -856,21 +885,21 @@ body {
 
 .sidebar-submit-btn {
   width: 100%;
-  margin-top: 16px;
-  background: var(--tdc-orange);
-  color: #ffffff;
+  margin-top: 14px;
+  background: var(--tdc-amber);
+  color: #0f172a;
   border: none;
-  padding: 12px;
+  padding: 11px;
   border-radius: var(--radius-sm);
-  font-size: 1rem;
-  font-weight: 700;
+  font-size: 0.98rem;
+  font-weight: 800;
   cursor: pointer;
-  box-shadow: 0 4px 10px rgba(255, 102, 0, 0.3);
+  box-shadow: 0 4px 10px rgba(245, 158, 11, 0.3);
   transition: all 0.2s;
 }
 
 .sidebar-submit-btn:hover {
-  background: var(--tdc-orange-hover);
+  background: var(--tdc-amber-hover);
   transform: translateY(-2px);
 }
 
@@ -887,7 +916,7 @@ body {
   align-items: center;
   justify-content: center;
   z-index: 2000;
-  padding: 20px;
+  padding: 16px;
 }
 
 .modal-overlay.open {
@@ -900,14 +929,14 @@ body {
   border-radius: var(--radius-lg);
   max-width: 520px;
   width: 100%;
-  padding: 26px;
+  padding: 24px;
   box-shadow: var(--shadow-lg);
   position: relative;
   animation: slideUp 0.3s ease-out;
 }
 
 @keyframes slideUp {
-  from { opacity: 0; transform: translateY(20px); }
+  from { opacity: 0; transform: translateY(15px); }
   to { opacity: 1; transform: translateY(0); }
 }
 
@@ -915,13 +944,13 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 16px;
+  margin-bottom: 14px;
 }
 
 .modal-title {
-  font-size: 1.25rem;
+  font-size: 1.2rem;
   font-weight: 800;
-  color: var(--tdc-blue);
+  color: var(--tdc-navy);
   display: flex;
   align-items: center;
   gap: 8px;
@@ -930,42 +959,42 @@ body {
 .modal-close-btn {
   background: none;
   border: none;
-  font-size: 1.4rem;
+  font-size: 1.35rem;
   color: var(--text-muted);
   cursor: pointer;
 }
 
 .modal-body {
-  font-size: 0.95rem;
+  font-size: 0.92rem;
   color: #334155;
-  margin-bottom: 22px;
-  line-height: 1.6;
+  margin-bottom: 20px;
+  line-height: 1.55;
 }
 
 .form-group {
-  margin-bottom: 14px;
+  margin-bottom: 12px;
 }
 
 .form-group label {
   display: block;
-  font-size: 0.85rem;
+  font-size: 0.83rem;
   font-weight: 700;
-  margin-bottom: 5px;
-  color: var(--tdc-blue);
+  margin-bottom: 4px;
+  color: var(--tdc-navy);
 }
 
 .form-group input {
   width: 100%;
-  padding: 10px 14px;
+  padding: 9px 12px;
   border: 1.5px solid var(--border-color);
   border-radius: var(--radius-sm);
-  font-size: 0.95rem;
+  font-size: 0.92rem;
   transition: border-color 0.2s;
 }
 
 .form-group input:focus {
   outline: none;
-  border-color: var(--tdc-blue);
+  border-color: var(--tdc-navy);
   box-shadow: 0 0 0 3px rgba(0, 51, 102, 0.15);
 }
 
@@ -979,17 +1008,17 @@ body {
   background: #e2e8f0;
   color: #334155;
   border: none;
-  padding: 9px 18px;
+  padding: 8px 16px;
   border-radius: var(--radius-sm);
   font-weight: 600;
   cursor: pointer;
 }
 
 .btn-primary {
-  background: var(--tdc-blue);
+  background: var(--tdc-navy);
   color: #ffffff;
   border: none;
-  padding: 9px 20px;
+  padding: 8px 18px;
   border-radius: var(--radius-sm);
   font-weight: 700;
   cursor: pointer;
@@ -998,34 +1027,33 @@ body {
 /* ================= FOOTER ================= */
 .app-footer {
   background: #ffffff;
-  border-top: 1px solid var(--border-color);
-  padding: 24px 20px;
-  margin-top: 40px;
+  border-top: 1px solid var(--border-light);
+  padding: 20px 16px;
+  margin-top: 35px;
   text-align: center;
-  font-size: 0.85rem;
+  font-size: 0.83rem;
   color: var(--text-muted);
 }
 
 .footer-content {
-  max-width: 1300px;
+  max-width: 1400px;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 6px;
   align-items: center;
 }
 
 .footer-school {
   font-weight: 700;
-  color: var(--tdc-blue);
+  color: var(--tdc-navy);
 }
 
 /* ================= PRINT STYLES ================= */
 @media print {
-  .header-actions,
+  .header-wrapper,
   .sidebar-sticky,
   .btn-flag,
-  .btn-header-submit,
   .sidebar-submit-btn,
   .review-filter-bar,
   .result-actions,
@@ -1043,11 +1071,11 @@ body {
     break-inside: avoid;
     box-shadow: none !important;
     border: 1px solid #ccc !important;
-    margin-bottom: 15px;
+    margin-bottom: 12px;
   }
 
   .results-summary-card {
-    background: #003366 !important;
+    background: #002b55 !important;
     color: #fff !important;
     -webkit-print-color-adjust: exact;
     print-color-adjust: exact;
@@ -1062,44 +1090,26 @@ body {
 
   .sidebar-sticky {
     position: static;
-    margin-bottom: 20px;
+    margin-bottom: 18px;
   }
 
   .questions-grid {
     grid-template-columns: repeat(8, 1fr);
-    max-height: 240px;
-  }
-
-  .header-container {
-    flex-wrap: wrap;
+    max-height: 220px;
   }
 }
 
-@media (max-width: 576px) {
-  .brand-school {
-    font-size: 0.7rem;
-  }
-  .brand-title {
-    font-size: 1.15rem;
-  }
-  .tdc-logo-img {
-    height: 42px;
-  }
-  .timer-box {
+@media (max-width: 680px) {
+  .brand-main-title {
     font-size: 1.05rem;
+  }
+  .status-pill-group, .visitor-pill {
+    padding: 5px 10px;
+    font-size: 0.8rem;
+  }
+  .btn-student-info, .btn-stats {
     padding: 5px 12px;
-  }
-  .questions-grid {
-    grid-template-columns: repeat(6, 1fr);
-  }
-  .question-card {
-    padding: 16px;
-  }
-  .results-grid {
-    grid-template-columns: 1fr 1fr;
-  }
-  .score-display {
-    font-size: 2.3rem;
+    font-size: 0.8rem;
   }
 }
 
@@ -1107,39 +1117,59 @@ body {
 </head>
 <body>
 
-  <!-- ================= TOP HEADER ================= -->
+  <!-- ================= TOP HEADER (MATCHES USER REFERENCE) ================= -->
   <header class="header-wrapper">
     <div class="header-container">
-      <!-- Top Left: TDC Logo & Title "English 2 - EXCHANGE" -->
+      
+      <!-- Left: TDC Logo White Box + Title + TA2 Badge -->
       <div class="brand-section">
-        <img src="logo-tdc.png" alt="Trường Cao Đẳng Công Nghệ Thủ Đức" class="tdc-logo-img" onerror="this.src='https://media.tdc.edu.vn/Media/1_TH1082/FolderFunc/202509/Images/tdc-20250922080814-e.png'">
-        <div class="brand-text">
-          <span class="brand-school">Trường Cao Đẳng Công Nghệ Thủ Đức</span>
-          <div class="brand-title">
-            English 2 - EXCHANGE
-            <span class="brand-badge">40 CÂU</span>
-          </div>
+        <div class="logo-white-card">
+          <img src="logo-tdc.png" alt="Trường Cao Đẳng Công Nghệ Thủ Đức" class="tdc-logo-img" onerror="this.src='https://media.tdc.edu.vn/Media/1_TH1082/FolderFunc/202509/Images/tdc-20250922080814-e.png'">
+        </div>
+        <div class="brand-title-wrap">
+          <span class="brand-main-title">English 2 - EXCHANGE</span>
+          <span class="badge-ta2">TA2</span>
         </div>
       </div>
 
-      <!-- Top Right: Visitor Count, Timer & Submit Button -->
-      <div class="header-actions">
-        <!-- Live Visitor Counter -->
-        <div class="visitor-badge" onclick="openTeacherModal()" title="Bấm vào để xem thống kê chi tiết lượt truy cập dành cho Giảng viên">
-          <span class="live-dot"></span>
-          <span>Truy cập: <strong id="visitorCount">...</strong></span>
+      <!-- Right Controls: Time & Progress, Visitor Count, Student Info, Statistics -->
+      <div class="header-controls">
+        
+        <!-- Time & Progress Pill -->
+        <div class="status-pill-group">
+          <div class="status-pill-item">
+            <span>🕒</span>
+            <span>Thời gian:</span>
+            <span id="timerDisplay" class="timer-digits">00:00</span>
+          </div>
+          <div class="status-divider"></div>
+          <div class="status-pill-item">
+            <span style="color: #4ade80;">✔</span>
+            <span>Đã làm:</span>
+            <span id="headerProgress" class="highlight-val">0/40</span>
+          </div>
         </div>
 
-        <!-- Timer Box -->
-        <div class="timer-box" id="timerBox" title="Thời gian làm bài">
-          <span class="timer-icon">⏱️</span>
-          <span id="timerDisplay">40:00</span>
+        <!-- Visitor Counter Pill -->
+        <div class="visitor-pill" onclick="openTeacherModal()" title="Bấm vào để xem thống kê lượt truy cập chi tiết">
+          <span class="live-green-dot"></span>
+          <span>👥</span>
+          <span>Lượt truy cập:</span>
+          <strong id="visitorCount" class="highlight-val">1</strong>
         </div>
 
-        <!-- Submit Button in Header -->
-        <button type="button" class="btn-header-submit" id="btnHeaderSubmit" onclick="promptSubmit()">
-          <span>✓</span> Nộp bài
+        <!-- Yellow Button: Nhập Họ tên & MSSV -->
+        <button type="button" class="btn-student-info" id="btnStudentInfo" onclick="openStudentModal()" title="Cập nhật thông tin sinh viên dự thi">
+          <span>📝</span>
+          <span>Nhập Họ tên & MSSV</span>
         </button>
+
+        <!-- Translucent Button: Thống kê -->
+        <button type="button" class="btn-stats" onclick="openTeacherModal()" title="Thống kê bài thi dành cho Giảng viên & Quản trị">
+          <span>📊</span>
+          <span>Thống kê</span>
+        </button>
+
       </div>
     </div>
   </header>
@@ -1160,7 +1190,7 @@ body {
         <div class="student-info-tags">
           <div class="student-tag">
             <span>👤 SV:</span>
-            <strong id="studentNameDisplay">Chưa nhập (Bấm để nhập)</strong>
+            <strong id="studentNameDisplay">Chưa nhập</strong>
           </div>
           <div class="student-tag">
             <span>🆔 MSSV:</span>
@@ -1170,9 +1200,6 @@ body {
             <span>🏫 Lớp:</span>
             <strong id="studentClassDisplay">Chưa nhập</strong>
           </div>
-          <button type="button" class="btn-edit-student" onclick="openStudentModal()" title="Thay đổi thông tin sinh viên">
-            ✏️ Sửa
-          </button>
         </div>
       </div>
 
@@ -1214,7 +1241,7 @@ body {
         </div>
 
         <div style="text-align: center; margin-top: 15px; font-size: 1.15rem; font-weight: 700;">
-          Xếp loại: <span id="scoreRating" style="color: #ffde59;">...</span>
+          Xếp loại: <span id="scoreRating" style="color: var(--tdc-yellow);">...</span>
         </div>
 
         <!-- Result Action Buttons -->
@@ -1233,7 +1260,7 @@ body {
 
       <!-- REVIEW FILTER BAR (Revealed only after submission) -->
       <div class="review-filter-bar" id="reviewFilterBar" style="display: none;">
-        <span style="font-size: 0.9rem; font-weight: 700; color: var(--tdc-blue);">
+        <span style="font-size: 0.9rem; font-weight: 700; color: var(--tdc-navy);">
           🔍 Lọc câu hỏi xem lại:
         </span>
         <div class="filter-btn-group">
@@ -1308,7 +1335,7 @@ body {
       <div class="footer-school">TRƯỜNG CAO ĐẲNG CÔNG NGHỆ THỦ ĐỨC (TDC)</div>
       <div>Học phần: <strong>English 2 - EXCHANGE</strong> | Hệ thống trắc nghiệm và ôn luyện trực tuyến</div>
       <div style="margin-top: 5px;">
-        <button type="button" onclick="openTeacherModal()" style="background: none; border: none; color: var(--tdc-blue-light); text-decoration: underline; cursor: pointer; font-size: 0.82rem;">
+        <button type="button" onclick="openTeacherModal()" style="background: none; border: none; color: var(--tdc-navy-light); text-decoration: underline; cursor: pointer; font-size: 0.82rem;">
           📊 Quản trị viên & Giảng viên: Xem số liệu truy cập & Hướng dẫn
         </button>
       </div>
@@ -1326,7 +1353,7 @@ body {
       </div>
       <div class="modal-body">
         <p style="margin-bottom: 15px; color: #64748b; font-size: 0.9rem;">
-          Vui lòng nhập thông tin để bảng điểm và kết quả của bạn được lưu trữ chính xác.
+          Vui lòng nhập thông tin để hệ thống ghi nhận vào bảng điểm và xuất kết quả chính xác.
         </p>
         <form onsubmit="saveStudentInfo(event)">
           <div class="form-group">
@@ -1343,7 +1370,7 @@ body {
           </div>
           <div class="modal-actions" style="margin-top: 20px;">
             <button type="button" class="btn-secondary" onclick="closeStudentModal()">Bỏ qua</button>
-            <button type="submit" class="btn-primary">Lưu & Bắt đầu làm bài</button>
+            <button type="submit" class="btn-primary">Lưu thông tin</button>
           </div>
         </form>
       </div>
@@ -1364,7 +1391,7 @@ body {
       </div>
       <div class="modal-actions">
         <button type="button" class="btn-secondary" onclick="closeSubmitModal()">Tiếp tục làm bài</button>
-        <button type="button" class="btn-primary" style="background: var(--tdc-orange);" onclick="confirmSubmit()">
+        <button type="button" class="btn-primary" style="background: var(--tdc-amber); color: #0f172a;" onclick="confirmSubmit()">
           Xác nhận Nộp bài
         </button>
       </div>
@@ -1389,7 +1416,7 @@ body {
           <div style="font-size: 0.8rem; color: #60a5fa;">Được đếm tự động theo thời gian thực mỗi khi có lượt truy cập mới.</div>
         </div>
 
-        <h4 style="font-size: 0.95rem; font-weight: 700; color: var(--tdc-blue); margin-bottom: 8px;">
+        <h4 style="font-size: 0.95rem; font-weight: 700; color: var(--tdc-navy); margin-bottom: 8px;">
           🔗 Link kiểm tra lượt truy cập trực tiếp từ API:
         </h4>
         <div style="background: #f1f5f9; padding: 10px; border-radius: 6px; font-family: monospace; font-size: 0.8rem; word-break: break-all; margin-bottom: 16px; border: 1px solid #cbd5e1;">
@@ -1398,7 +1425,7 @@ body {
           </a>
         </div>
 
-        <h4 style="font-size: 0.95rem; font-weight: 700; color: var(--tdc-blue); margin-bottom: 8px;">
+        <h4 style="font-size: 0.95rem; font-weight: 700; color: var(--tdc-navy); margin-bottom: 8px;">
           📋 Lịch sử nộp bài gần đây trên trình duyệt này:
         </h4>
         <div id="teacherSubmissionsList" style="max-height: 180px; overflow-y: auto; margin-bottom: 15px;">
@@ -1992,7 +2019,7 @@ const questionsData = [
  * Trường Cao đẳng Công nghệ Thủ Đức (TDC)
  */
 
-// Safe storage helpers to prevent SecurityError in restricted environments
+// Safe storage helpers
 const safeStorage = {
   getItem: (key, fallback = "") => {
     try {
@@ -2034,13 +2061,10 @@ document.addEventListener("DOMContentLoaded", () => {
     answers: {},       // { 1: 'A', 2: 'B', ... }
     flags: new Set(),  // Set of flagged question IDs
     isSubmitted: false,
-    startTime: Date.now(),
-    endTime: null,
-    timeLimitSeconds: 40 * 60, // 40 minutes
-    remainingSeconds: 40 * 60,
+    elapsedSeconds: 0, // Count up from 00:00 (matching reference image)
     timerInterval: null,
     filterMode: 'all', // 'all', 'correct', 'incorrect'
-    visitorCount: 0
+    visitorCount: 1
   };
 
   // DOM Elements
@@ -2048,9 +2072,10 @@ document.addEventListener("DOMContentLoaded", () => {
   const questionsGrid = document.getElementById("questionsGrid");
   const progressText = document.getElementById("progressText");
   const progressBarFill = document.getElementById("progressBarFill");
+  const headerProgressEl = document.getElementById("headerProgress");
   const timerDisplay = document.getElementById("timerDisplay");
-  const timerBox = document.getElementById("timerBox");
   const visitorCountEl = document.getElementById("visitorCount");
+  const btnStudentInfo = document.getElementById("btnStudentInfo");
 
   // Results elements
   const resultsSummaryCard = document.getElementById("resultsSummaryCard");
@@ -2068,7 +2093,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const submitConfirmModal = document.getElementById("submitConfirmModal");
   const teacherModal = document.getElementById("teacherModal");
 
-  // Student info elements
+  // Student info elements in meta card
   const studentNameDisplay = document.getElementById("studentNameDisplay");
   const studentIdDisplay = document.getElementById("studentIdDisplay");
   const studentClassDisplay = document.getElementById("studentClassDisplay");
@@ -2111,9 +2136,23 @@ document.addEventListener("DOMContentLoaded", () => {
 
   /* ================= 2. STUDENT INFO ================= */
   function updateStudentDisplay() {
-    if (studentNameDisplay) studentNameDisplay.textContent = state.student.name || "Chưa nhập (Bấm để nhập)";
+    const hasInfo = state.student.name || state.student.id;
+
+    if (studentNameDisplay) studentNameDisplay.textContent = state.student.name || "Chưa nhập";
     if (studentIdDisplay) studentIdDisplay.textContent = state.student.id || "Chưa nhập";
     if (studentClassDisplay) studentClassDisplay.textContent = state.student.classroom || "Chưa nhập";
+
+    // Update Header Pill Button
+    if (btnStudentInfo) {
+      if (state.student.name) {
+        const shortName = state.student.name.split(" ").slice(-2).join(" ");
+        const studentTag = state.student.id ? `${shortName} (${state.student.id})` : shortName;
+        btnStudentInfo.innerHTML = `<span>📝</span> <span>${studentTag}</span>`;
+        btnStudentInfo.title = `Sinh viên: ${state.student.name} - MSSV: ${state.student.id || "N/A"}`;
+      } else {
+        btnStudentInfo.innerHTML = `<span>📝</span> <span>Nhập Họ tên & MSSV</span>`;
+      }
+    }
 
     const inName = document.getElementById("inputStudentName");
     const inId = document.getElementById("inputStudentId");
@@ -2149,7 +2188,7 @@ document.addEventListener("DOMContentLoaded", () => {
     closeStudentModal();
   };
 
-  /* ================= 3. TIMER ================= */
+  /* ================= 3. COUNT-UP TIMER (MATCHES REFERENCE 00:04) ================= */
   function startTimer() {
     if (state.timerInterval) clearInterval(state.timerInterval);
     state.timerInterval = setInterval(() => {
@@ -2158,34 +2197,16 @@ document.addEventListener("DOMContentLoaded", () => {
         return;
       }
 
-      state.remainingSeconds--;
-
-      if (state.remainingSeconds <= 0) {
-        state.remainingSeconds = 0;
-        updateTimerDisplay();
-        clearInterval(state.timerInterval);
-        alert("⏰ Đã hết thời gian làm bài! Hệ thống sẽ tự động nộp bài của bạn.");
-        submitExam(true);
-        return;
-      }
-
+      state.elapsedSeconds++;
       updateTimerDisplay();
     }, 1000);
   }
 
   function updateTimerDisplay() {
     if (!timerDisplay) return;
-    const mins = Math.floor(state.remainingSeconds / 60);
-    const secs = state.remainingSeconds % 60;
+    const mins = Math.floor(state.elapsedSeconds / 60);
+    const secs = state.elapsedSeconds % 60;
     timerDisplay.textContent = `${String(mins).padStart(2, "0")}:${String(secs).padStart(2, "0")}`;
-
-    if (timerBox) {
-      if (state.remainingSeconds <= 300) {
-        timerBox.classList.add("timer-warning");
-      } else {
-        timerBox.classList.remove("timer-warning");
-      }
-    }
   }
 
   /* ================= 4. RENDER QUESTIONS & PALETTE ================= */
@@ -2317,6 +2338,10 @@ document.addEventListener("DOMContentLoaded", () => {
     const total = (typeof questionsData !== "undefined") ? questionsData.length : 40;
     const percent = Math.round((answeredCount / total) * 100);
 
+    // Update Header Pill: Đã làm: 0/40
+    if (headerProgressEl) headerProgressEl.textContent = `${answeredCount}/${total}`;
+
+    // Update Sidebar progress
     if (progressText) progressText.textContent = `Đã làm: ${answeredCount} / ${total} câu (${percent}%)`;
     if (progressBarFill) progressBarFill.style.width = `${percent}%`;
   }
@@ -2367,15 +2392,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
   window.confirmSubmit = function() {
     closeSubmitModal();
-    submitExam(false);
+    submitExam();
   };
 
-  function submitExam(autoSubmit = false) {
+  function submitExam() {
     state.isSubmitted = true;
-    state.endTime = Date.now();
     clearInterval(state.timerInterval);
 
-    const totalDurationSeconds = Math.max(1, (40 * 60) - state.remainingSeconds);
+    const totalDurationSeconds = Math.max(1, state.elapsedSeconds);
     const durationMins = Math.floor(totalDurationSeconds / 60);
     const durationSecs = totalDurationSeconds % 60;
     const timeFormatted = `${durationMins} phút ${durationSecs} giây`;
@@ -2410,17 +2434,11 @@ document.addEventListener("DOMContentLoaded", () => {
     if (resultsSummaryCard) resultsSummaryCard.style.display = "block";
     if (reviewFilterBar) reviewFilterBar.style.display = "flex";
 
-    const headerSubmitBtn = document.getElementById("btnHeaderSubmit");
-    if (headerSubmitBtn) {
-      headerSubmitBtn.textContent = "✓ Đã nộp bài";
-      headerSubmitBtn.style.background = "#10b981";
-      headerSubmitBtn.disabled = true;
-    }
-
     const sidebarSubmitBtn = document.getElementById("btnSidebarSubmit");
     if (sidebarSubmitBtn) {
-      sidebarSubmitBtn.textContent = "✓ Đã nộp bài";
+      sidebarSubmitBtn.textContent = "✓ ĐÃ NỘP BÀI THI";
       sidebarSubmitBtn.style.background = "#10b981";
+      sidebarSubmitBtn.style.boxShadow = "none";
       sidebarSubmitBtn.disabled = true;
     }
 
@@ -2517,27 +2535,21 @@ document.addEventListener("DOMContentLoaded", () => {
       state.answers = {};
       state.flags.clear();
       state.isSubmitted = false;
-      state.remainingSeconds = 40 * 60;
+      state.elapsedSeconds = 0;
       state.filterMode = 'all';
 
       if (resultsSummaryCard) resultsSummaryCard.style.display = "none";
       if (reviewFilterBar) reviewFilterBar.style.display = "none";
 
-      const headerSubmitBtn = document.getElementById("btnHeaderSubmit");
-      if (headerSubmitBtn) {
-        headerSubmitBtn.textContent = "Nộp bài";
-        headerSubmitBtn.style.background = "var(--tdc-orange)";
-        headerSubmitBtn.disabled = false;
-      }
-
       const sidebarSubmitBtn = document.getElementById("btnSidebarSubmit");
       if (sidebarSubmitBtn) {
-        sidebarSubmitBtn.textContent = "NỘP BÀI";
-        sidebarSubmitBtn.style.background = "var(--tdc-orange)";
+        sidebarSubmitBtn.textContent = "NỘP BÀI THI";
+        sidebarSubmitBtn.style.background = "var(--tdc-amber)";
         sidebarSubmitBtn.disabled = false;
       }
 
       renderQuestions();
+      updateTimerDisplay();
       startTimer();
       window.scrollTo({ top: 0, behavior: "smooth" });
     }
@@ -2565,6 +2577,7 @@ document.addEventListener("DOMContentLoaded", () => {
       ["Lớp", state.student.classroom || "N/A"],
       ["Điểm số", `${correctCount}/${total}`],
       ["Điểm hệ 10", scale10],
+      ["Thời gian hoàn thành", `${Math.floor(state.elapsedSeconds / 60)} phút ${state.elapsedSeconds % 60} giây`],
       ["Thời gian nộp bài", new Date().toLocaleString("vi-VN")],
       [""],
       ["Câu hỏi", "Lựa chọn của SV", "Đáp án đúng", "Kết quả"]
