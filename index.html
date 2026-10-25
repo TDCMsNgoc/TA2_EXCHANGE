@@ -1,11 +1,1109 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="vi">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>English 2 - EXCHANGE | Trường Cao Đẳng Công Nghệ Thủ Đức (TDC)</title>
   <link rel="icon" type="image/png" href="logo-tdc.png">
-  <link rel="stylesheet" href="css/style.css">
+  <style>
+/* ==========================================================================
+   CSS STYLES - ENGLISH 2: EXCHANGE (40 MULTIPLE-CHOICE QUESTIONS)
+   Trường Cao đẳng Công nghệ Thủ Đức (TDC)
+   ========================================================================== */
+
+:root {
+  --tdc-blue: #003366;
+  --tdc-blue-dark: #002244;
+  --tdc-blue-light: #0d5aa7;
+  --tdc-orange: #ff6600;
+  --tdc-orange-hover: #e55b00;
+  --tdc-orange-light: #fff2e6;
+  --bg-page: #f4f7fb;
+  --bg-card: #ffffff;
+  --text-main: #1e293b;
+  --text-muted: #64748b;
+  --border-color: #e2e8f0;
+  --success: #10b981;
+  --success-bg: #ecfdf5;
+  --success-border: #a7f3d0;
+  --danger: #ef4444;
+  --danger-bg: #fef2f2;
+  --danger-border: #fecaca;
+  --warning: #f59e0b;
+  --warning-bg: #fffbeb;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.08);
+  --shadow-md: 0 4px 12px rgba(0,0,0,0.06);
+  --shadow-lg: 0 10px 25px rgba(0,0,0,0.1);
+  --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-family);
+  background-color: var(--bg-page);
+  color: var(--text-main);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ================= TOP HEADER ================= */
+.header-wrapper {
+  background: #ffffff;
+  border-bottom: 2px solid var(--border-color);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: var(--shadow-sm);
+}
+
+.header-container {
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+}
+
+.brand-section {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  text-decoration: none;
+}
+
+.tdc-logo-img {
+  height: 52px;
+  width: auto;
+  object-fit: contain;
+  transition: transform 0.2s;
+}
+
+.brand-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.brand-school {
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: var(--tdc-blue);
+  letter-spacing: 0.5px;
+}
+
+.brand-title {
+  font-size: 1.45rem;
+  font-weight: 800;
+  color: var(--tdc-orange);
+  line-height: 1.2;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.brand-badge {
+  background: var(--tdc-blue);
+  color: #fff;
+  font-size: 0.72rem;
+  padding: 2px 8px;
+  border-radius: 20px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+/* Header Right: Timer & Counters */
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.visitor-badge {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: #f1f5f9;
+  border: 1px solid var(--border-color);
+  padding: 6px 12px;
+  border-radius: 30px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.visitor-badge:hover {
+  background: #e2e8f0;
+  color: var(--tdc-blue);
+}
+
+.visitor-badge .live-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: var(--success);
+  display: inline-block;
+  box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.3);
+  animation: pulseDot 2s infinite;
+}
+
+@keyframes pulseDot {
+  0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7); }
+  70% { transform: scale(1); box-shadow: 0 0 0 6px rgba(16, 185, 129, 0); }
+  100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
+}
+
+.timer-box {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--tdc-blue-dark);
+  color: #ffffff;
+  padding: 7px 16px;
+  border-radius: var(--radius-sm);
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 1.25rem;
+  font-weight: 700;
+  box-shadow: 0 2px 6px rgba(0, 34, 68, 0.2);
+}
+
+.timer-box.timer-warning {
+  background: #dc2626;
+  animation: blinkTimer 1s infinite alternate;
+}
+
+@keyframes blinkTimer {
+  from { opacity: 1; }
+  to { opacity: 0.75; }
+}
+
+.timer-icon {
+  font-size: 1.1rem;
+}
+
+.btn-header-submit {
+  background: var(--tdc-orange);
+  color: #fff;
+  border: none;
+  padding: 8px 18px;
+  font-size: 0.95rem;
+  font-weight: 700;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.2s;
+  box-shadow: 0 2px 5px rgba(255, 102, 0, 0.3);
+}
+
+.btn-header-submit:hover {
+  background: var(--tdc-orange-hover);
+  transform: translateY(-1px);
+}
+
+/* ================= MAIN CONTAINER ================= */
+.main-layout {
+  max-width: 1300px;
+  margin: 20px auto;
+  padding: 0 20px;
+  display: grid;
+  grid-template-columns: 1fr 340px;
+  gap: 25px;
+  align-items: start;
+}
+
+/* Student & Exam Info Card */
+.exam-meta-card {
+  background: #ffffff;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 16px 20px;
+  margin-bottom: 20px;
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+  border-left: 5px solid var(--tdc-orange);
+}
+
+.exam-meta-left {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.exam-subject-name {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--tdc-blue);
+}
+
+.exam-meta-sub {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.student-info-tags {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.student-tag {
+  background: #f8fafc;
+  border: 1px solid var(--border-color);
+  padding: 5px 12px;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  color: var(--text-main);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.student-tag strong {
+  color: var(--tdc-blue);
+}
+
+.btn-edit-student {
+  background: none;
+  border: 1px dashed var(--tdc-blue-light);
+  color: var(--tdc-blue-light);
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn-edit-student:hover {
+  background: #eff6ff;
+}
+
+/* ================= RESULTS SUMMARY BANNER ================= */
+.results-summary-card {
+  background: linear-gradient(135deg, #003366 0%, #0d5aa7 100%);
+  color: #ffffff;
+  border-radius: var(--radius-lg);
+  padding: 28px;
+  margin-bottom: 25px;
+  box-shadow: var(--shadow-lg);
+  display: none; /* Revealed after submission */
+  animation: slideDown 0.4s ease-out;
+}
+
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.results-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 20px;
+  align-items: center;
+  text-align: center;
+}
+
+.score-circle-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.score-display {
+  font-size: 3rem;
+  font-weight: 900;
+  line-height: 1;
+  color: #ffde59;
+  text-shadow: 0 2px 10px rgba(0,0,0,0.2);
+}
+
+.score-scale-10 {
+  font-size: 1.15rem;
+  font-weight: 600;
+  margin-top: 4px;
+  color: #e0f2fe;
+}
+
+.result-stat-box {
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(8px);
+  padding: 16px;
+  border-radius: var(--radius-md);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+.result-stat-value {
+  font-size: 1.8rem;
+  font-weight: 800;
+}
+
+.result-stat-label {
+  font-size: 0.85rem;
+  opacity: 0.9;
+  margin-top: 2px;
+}
+
+.result-actions {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.btn-result-action {
+  background: #ffffff;
+  color: var(--tdc-blue);
+  border: none;
+  padding: 9px 20px;
+  border-radius: var(--radius-sm);
+  font-size: 0.9rem;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.2s;
+}
+
+.btn-result-action:hover {
+  background: #f1f5f9;
+  transform: translateY(-1px);
+}
+
+.btn-retake {
+  background: var(--tdc-orange);
+  color: #fff;
+}
+
+.btn-retake:hover {
+  background: var(--tdc-orange-hover);
+}
+
+/* ================= FILTER BAR (AFTER SUBMIT) ================= */
+.review-filter-bar {
+  background: #ffffff;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 12px 18px;
+  margin-bottom: 20px;
+  display: none;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+  box-shadow: var(--shadow-sm);
+}
+
+.filter-btn-group {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.filter-pill {
+  border: 1px solid var(--border-color);
+  background: #f8fafc;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-main);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.filter-pill.active {
+  background: var(--tdc-blue);
+  color: #fff;
+  border-color: var(--tdc-blue);
+}
+
+/* ================= QUESTION CARDS ================= */
+.questions-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.question-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 22px;
+  box-shadow: var(--shadow-sm);
+  transition: border-color 0.2s, box-shadow 0.2s;
+  position: relative;
+  scroll-margin-top: 90px;
+}
+
+.question-card:hover {
+  box-shadow: var(--shadow-md);
+}
+
+.question-card.flagged {
+  border-left: 5px solid var(--warning);
+}
+
+.question-card.correct-card {
+  border-left: 5px solid var(--success);
+  background-color: #fbfffd;
+}
+
+.question-card.incorrect-card {
+  border-left: 5px solid var(--danger);
+  background-color: #fffcfc;
+}
+
+.question-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.question-num-badge {
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: var(--tdc-blue);
+  background: #eef4fb;
+  padding: 4px 12px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.question-actions-right {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.btn-flag {
+  background: transparent;
+  border: 1px solid var(--border-color);
+  color: var(--text-muted);
+  border-radius: 6px;
+  padding: 4px 10px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  transition: all 0.2s;
+}
+
+.btn-flag:hover, .btn-flag.active {
+  background: var(--warning-bg);
+  border-color: var(--warning);
+  color: #b45309;
+}
+
+.question-status-tag {
+  font-size: 0.8rem;
+  font-weight: 700;
+  padding: 3px 10px;
+  border-radius: 20px;
+  display: none;
+}
+
+.question-status-tag.correct {
+  display: inline-block;
+  background: var(--success-bg);
+  color: #065f46;
+  border: 1px solid var(--success-border);
+}
+
+.question-status-tag.incorrect {
+  display: inline-block;
+  background: var(--danger-bg);
+  color: #991b1b;
+  border: 1px solid var(--danger-border);
+}
+
+/* Question Dialogue Text */
+.question-dialogue {
+  font-size: 1.08rem;
+  font-weight: 600;
+  color: #0f172a;
+  background: #f8fafc;
+  padding: 14px 18px;
+  border-radius: var(--radius-sm);
+  border: 1px solid #edf2f7;
+  white-space: pre-line;
+  margin-bottom: 16px;
+  line-height: 1.6;
+}
+
+/* Options Grid */
+.options-group {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
+}
+
+@media (min-width: 768px) {
+  .options-group {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.option-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  border: 1.5px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  background: #ffffff;
+  cursor: pointer;
+  transition: all 0.2s;
+  user-select: none;
+  position: relative;
+}
+
+.option-item:hover {
+  background: #f8fafc;
+  border-color: #cbd5e1;
+}
+
+.option-item.selected {
+  border-color: var(--tdc-blue);
+  background: #f0f7ff;
+}
+
+.option-radio {
+  display: none;
+}
+
+.option-key {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: 1.5px solid #94a3b8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 0.85rem;
+  color: #475569;
+  flex-shrink: 0;
+  transition: all 0.2s;
+}
+
+.option-item.selected .option-key {
+  border-color: var(--tdc-blue);
+  background: var(--tdc-blue);
+  color: #ffffff;
+}
+
+.option-text {
+  font-size: 0.98rem;
+  color: #1e293b;
+  flex: 1;
+}
+
+/* Review States for Options */
+.option-item.option-correct {
+  border-color: var(--success) !important;
+  background: var(--success-bg) !important;
+  color: #065f46;
+  font-weight: 600;
+}
+
+.option-item.option-correct .option-key {
+  background: var(--success) !important;
+  border-color: var(--success) !important;
+  color: #ffffff !important;
+}
+
+.option-item.option-wrong-choice {
+  border-color: var(--danger) !important;
+  background: var(--danger-bg) !important;
+  color: #991b1b;
+  text-decoration: line-through;
+}
+
+.option-item.option-wrong-choice .option-key {
+  background: var(--danger) !important;
+  border-color: var(--danger) !important;
+  color: #ffffff !important;
+}
+
+/* Solution Explanation & Translation Box (Hidden initially) */
+.solution-box {
+  margin-top: 18px;
+  padding-top: 16px;
+  border-top: 1px dashed var(--border-color);
+  display: none; /* Revealed after submit */
+  animation: fadeIn 0.3s ease-in;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.explanation-section {
+  background: #f0fdf4;
+  border: 1px solid #bbf7d0;
+  border-radius: var(--radius-sm);
+  padding: 14px 16px;
+  margin-bottom: 12px;
+}
+
+.section-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #15803d;
+  margin-bottom: 8px;
+  letter-spacing: 0.5px;
+}
+
+.explanation-text {
+  font-size: 0.92rem;
+  color: #14532d;
+  line-height: 1.6;
+  white-space: pre-line;
+}
+
+.translation-section {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: var(--radius-sm);
+  padding: 14px 16px;
+}
+
+.translation-section .section-badge {
+  color: var(--tdc-blue);
+}
+
+.translation-text {
+  font-size: 0.92rem;
+  color: #334155;
+  line-height: 1.6;
+  white-space: pre-line;
+}
+
+/* ================= RIGHT SIDEBAR: QUESTION PALETTE ================= */
+.sidebar-sticky {
+  position: sticky;
+  top: 85px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 20px;
+  box-shadow: var(--shadow-sm);
+}
+
+.sidebar-title {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--tdc-blue);
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.progress-info {
+  margin-bottom: 14px;
+}
+
+.progress-text {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  margin-bottom: 6px;
+}
+
+.progress-bar-bg {
+  width: 100%;
+  height: 8px;
+  background: #e2e8f0;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.progress-bar-fill {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, var(--tdc-blue) 0%, var(--tdc-orange) 100%);
+  transition: width 0.3s ease;
+}
+
+.palette-legend {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  margin-bottom: 14px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.legend-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 3px;
+  border: 1px solid var(--border-color);
+}
+
+.legend-dot.answered { background: var(--tdc-blue); border-color: var(--tdc-blue); }
+.legend-dot.unanswered { background: #f8fafc; }
+.legend-dot.flagged { background: var(--warning); border-color: var(--warning); }
+.legend-dot.correct { background: var(--success); border-color: var(--success); }
+.legend-dot.incorrect { background: var(--danger); border-color: var(--danger); }
+
+/* The 40 Grid Buttons */
+.questions-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 8px;
+  max-height: 380px;
+  overflow-y: auto;
+  padding-right: 4px;
+}
+
+.grid-btn {
+  aspect-ratio: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.85rem;
+  font-weight: 700;
+  border: 1.5px solid var(--border-color);
+  background: #f8fafc;
+  border-radius: 6px;
+  color: #475569;
+  cursor: pointer;
+  transition: all 0.2s;
+  position: relative;
+}
+
+.grid-btn:hover {
+  background: #e2e8f0;
+  border-color: #94a3b8;
+}
+
+.grid-btn.answered {
+  background: var(--tdc-blue);
+  color: #ffffff;
+  border-color: var(--tdc-blue);
+}
+
+.grid-btn.flagged::after {
+  content: "★";
+  position: absolute;
+  top: 1px;
+  right: 3px;
+  font-size: 0.65rem;
+  color: var(--warning);
+}
+
+.grid-btn.answered.flagged::after {
+  color: #ffde59;
+}
+
+/* Post-submission grid states */
+.grid-btn.grid-correct {
+  background: var(--success) !important;
+  color: #ffffff !important;
+  border-color: var(--success) !important;
+}
+
+.grid-btn.grid-incorrect {
+  background: var(--danger) !important;
+  color: #ffffff !important;
+  border-color: var(--danger) !important;
+}
+
+.sidebar-submit-btn {
+  width: 100%;
+  margin-top: 16px;
+  background: var(--tdc-orange);
+  color: #ffffff;
+  border: none;
+  padding: 12px;
+  border-radius: var(--radius-sm);
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(255, 102, 0, 0.3);
+  transition: all 0.2s;
+}
+
+.sidebar-submit-btn:hover {
+  background: var(--tdc-orange-hover);
+  transform: translateY(-2px);
+}
+
+/* ================= MODALS ================= */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(15, 23, 42, 0.6);
+  backdrop-filter: blur(4px);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+  padding: 20px;
+}
+
+.modal-overlay.open {
+  display: flex;
+  animation: fadeIn 0.2s ease-out;
+}
+
+.modal-box {
+  background: #ffffff;
+  border-radius: var(--radius-lg);
+  max-width: 520px;
+  width: 100%;
+  padding: 26px;
+  box-shadow: var(--shadow-lg);
+  position: relative;
+  animation: slideUp 0.3s ease-out;
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.modal-title {
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: var(--tdc-blue);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.modal-close-btn {
+  background: none;
+  border: none;
+  font-size: 1.4rem;
+  color: var(--text-muted);
+  cursor: pointer;
+}
+
+.modal-body {
+  font-size: 0.95rem;
+  color: #334155;
+  margin-bottom: 22px;
+  line-height: 1.6;
+}
+
+.form-group {
+  margin-bottom: 14px;
+}
+
+.form-group label {
+  display: block;
+  font-size: 0.85rem;
+  font-weight: 700;
+  margin-bottom: 5px;
+  color: var(--tdc-blue);
+}
+
+.form-group input {
+  width: 100%;
+  padding: 10px 14px;
+  border: 1.5px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  font-size: 0.95rem;
+  transition: border-color 0.2s;
+}
+
+.form-group input:focus {
+  outline: none;
+  border-color: var(--tdc-blue);
+  box-shadow: 0 0 0 3px rgba(0, 51, 102, 0.15);
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.btn-secondary {
+  background: #e2e8f0;
+  color: #334155;
+  border: none;
+  padding: 9px 18px;
+  border-radius: var(--radius-sm);
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.btn-primary {
+  background: var(--tdc-blue);
+  color: #ffffff;
+  border: none;
+  padding: 9px 20px;
+  border-radius: var(--radius-sm);
+  font-weight: 700;
+  cursor: pointer;
+}
+
+/* ================= FOOTER ================= */
+.app-footer {
+  background: #ffffff;
+  border-top: 1px solid var(--border-color);
+  padding: 24px 20px;
+  margin-top: 40px;
+  text-align: center;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.footer-content {
+  max-width: 1300px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: center;
+}
+
+.footer-school {
+  font-weight: 700;
+  color: var(--tdc-blue);
+}
+
+/* ================= PRINT STYLES ================= */
+@media print {
+  .header-actions,
+  .sidebar-sticky,
+  .btn-flag,
+  .btn-header-submit,
+  .sidebar-submit-btn,
+  .review-filter-bar,
+  .result-actions,
+  .app-footer {
+    display: none !important;
+  }
+
+  .main-layout {
+    grid-template-columns: 1fr;
+    margin: 0;
+    padding: 0;
+  }
+
+  .question-card {
+    break-inside: avoid;
+    box-shadow: none !important;
+    border: 1px solid #ccc !important;
+    margin-bottom: 15px;
+  }
+
+  .results-summary-card {
+    background: #003366 !important;
+    color: #fff !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+}
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 992px) {
+  .main-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .sidebar-sticky {
+    position: static;
+    margin-bottom: 20px;
+  }
+
+  .questions-grid {
+    grid-template-columns: repeat(8, 1fr);
+    max-height: 240px;
+  }
+
+  .header-container {
+    flex-wrap: wrap;
+  }
+}
+
+@media (max-width: 576px) {
+  .brand-school {
+    font-size: 0.7rem;
+  }
+  .brand-title {
+    font-size: 1.15rem;
+  }
+  .tdc-logo-img {
+    height: 42px;
+  }
+  .timer-box {
+    font-size: 1.05rem;
+    padding: 5px 12px;
+  }
+  .questions-grid {
+    grid-template-columns: repeat(6, 1fr);
+  }
+  .question-card {
+    padding: 16px;
+  }
+  .results-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+  .score-display {
+    font-size: 2.3rem;
+  }
+}
+
+  </style>
 </head>
 <body>
 
@@ -62,15 +1160,15 @@
         <div class="student-info-tags">
           <div class="student-tag">
             <span>👤 SV:</span>
-            <strong id="studentNameDisplay">Đang tải...</strong>
+            <strong id="studentNameDisplay">Chưa nhập (Bấm để nhập)</strong>
           </div>
           <div class="student-tag">
             <span>🆔 MSSV:</span>
-            <strong id="studentIdDisplay">Đang tải...</strong>
+            <strong id="studentIdDisplay">Chưa nhập</strong>
           </div>
           <div class="student-tag">
             <span>🏫 Lớp:</span>
-            <strong id="studentClassDisplay">Đang tải...</strong>
+            <strong id="studentClassDisplay">Chưa nhập</strong>
           </div>
           <button type="button" class="btn-edit-student" onclick="openStudentModal()" title="Thay đổi thông tin sinh viên">
             ✏️ Sửa
@@ -78,8 +1176,8 @@
         </div>
       </div>
 
-      <!-- RESULTS SUMMARY CARD (Revealed after submission) -->
-      <section class="results-summary-card" id="resultsSummaryCard">
+      <!-- RESULTS SUMMARY CARD (Revealed only after submission) -->
+      <section class="results-summary-card" id="resultsSummaryCard" style="display: none;">
         <h2 style="font-size: 1.5rem; margin-bottom: 20px; font-weight: 800; text-align: center;">
           🏆 KẾT QUẢ BÀI THI: ENGLISH 2 - EXCHANGE
         </h2>
@@ -133,8 +1231,8 @@
         </div>
       </section>
 
-      <!-- REVIEW FILTER BAR (Revealed after submission) -->
-      <div class="review-filter-bar" id="reviewFilterBar">
+      <!-- REVIEW FILTER BAR (Revealed only after submission) -->
+      <div class="review-filter-bar" id="reviewFilterBar" style="display: none;">
         <span style="font-size: 0.9rem; font-weight: 700; color: var(--tdc-blue);">
           🔍 Lọc câu hỏi xem lại:
         </span>
@@ -318,8 +1416,1224 @@
     </div>
   </div>
 
-  <!-- Scripts -->
-  <script src="js/questions.js"></script>
-  <script src="js/app.js"></script>
+  <!-- Inline Scripts for 100% self-contained standalone execution -->
+  <script>
+/**
+ * DATASET 40 CÂU TRẮC NGHIỆM TIẾNG ANH GIAO TIẾP
+ * Học phần: English 2 - EXCHANGE
+ * Trường Cao đẳng Công nghệ Thủ Đức (TDC)
+ */
+
+const questionsData = [
+  {
+    id: 1,
+    speaker: "Tony & Jim",
+    dialogue: "– Tony: “I've just passed my exam”\n– Jim: “_______”",
+    options: {
+      A: "Well done!",
+      B: "You're welcome",
+      C: "How do you do?",
+      D: "Good luck!"
+    },
+    correct: "A",
+    explanation: "Khi ai đó thông báo vừa vượt qua một kỳ thi ('passed my exam') hoặc đạt được một thành tích, lời đáp chuẩn mực và tự nhiên nhất là khen ngợi/chúc mừng: 'Well done!' (Làm tốt lắm! / Giỏi lắm!).\n• 'You're welcome': Dùng để đáp lại lời cảm ơn ('Không có chi').\n• 'How do you do?': Lời chào trang trọng khi gặp mặt ai đó lần đầu tiên.\n• 'Good luck!': Chúc may mắn (chỉ dùng trước khi người đó đi thi hoặc làm việc gì đó).",
+    translation: "– Tony: “Tôi vừa thi đỗ kỳ thi rồi!”\n– Jim: “Làm tốt lắm / Giỏi lắm!”\n\n• A. Làm tốt lắm! (Đúng)\n• B. Không có chi\n• C. Xin chào (gặp lần đầu)\n• D. Chúc may mắn!"
+  },
+  {
+    id: 2,
+    speaker: "A & B",
+    dialogue: "– A: “I’ve passed my driving test.”\n– B: “_______”",
+    options: {
+      A: "Congratulations!",
+      B: "That’s a good idea.",
+      C: "It’s nice of you to say so.",
+      D: "Do you?"
+    },
+    correct: "A",
+    explanation: "Khi người đối thoại báo tin vui đã thi đậu bằng lái xe ('passed my driving test'), ta dùng 'Congratulations!' (Xin chúc mừng!).\n• 'That’s a good idea': Đồng ý với một lời gợi ý/ý kiến.\n• 'It’s nice of you to say so': Cảm ơn khi được người khác khen ngợi.\n• 'Do you?': Câu hỏi láy thì hiện tại đơn, không phù hợp với thì hiện tại hoàn thành 'I have passed'.",
+    translation: "– A: “Tôi vừa thi đỗ bằng lái xe rồi.”\n– B: “Xin chúc mừng bạn!”\n\n• A. Xin chúc mừng! (Đúng)\n• B. Đó là một ý kiến hay.\n• C. Bạn thật tử tế khi nói vậy.\n• D. Bạn làm thật sao?"
+  },
+  {
+    id: 3,
+    speaker: "A & B",
+    dialogue: "– A: “Would you like to have dinner with me?”\n– B: “_______.”",
+    options: {
+      A: "Yes, so do I",
+      B: "I’m very happy",
+      C: "Yes, it is",
+      D: "Yes, I’d love to"
+    },
+    correct: "D",
+    explanation: "Cấu trúc lời mời: 'Would you like to + V...?'. Lời nhận lời lịch sự và thông dụng nhất là: 'Yes, I’d love to' (Vâng, tôi rất sẵn lòng / rất thích) hoặc 'I'd love to, thank you'.\n• 'Yes, so do I': Đồng tình với câu khẳng định thì hiện tại đơn ('Tôi cũng vậy').\n• 'I’m very happy': Bày tỏ cảm xúc đơn thuần, không dùng làm câu nhận lời mời trực tiếp.\n• 'Yes, it is': Trả lời cho câu hỏi Yes/No với to be 'Is it...?'",
+    translation: "– A: “Bạn có muốn đi ăn tối cùng tôi không?”\n– B: “Vâng, tôi rất sẵn lòng.”\n\n• A. Vâng, tôi cũng vậy\n• B. Tôi đang rất vui\n• C. Vâng, đúng thế\n• D. Vâng, tôi rất sẵn lòng (Đúng)"
+  },
+  {
+    id: 4,
+    speaker: "A & B",
+    dialogue: "– A: “_______where the nearest post office is?”\n– B: “Turn left and then turn right.”",
+    options: {
+      A: "Should you show me",
+      B: "Could you tell me",
+      C: "Do you tell me",
+      D: "Will you say me"
+    },
+    correct: "B",
+    explanation: "Mẫu câu nhờ vả / hỏi đường lịch sự trong tiếng Anh: 'Could you tell me + where...?' (Bạn có thể cho tôi biết... ở đâu không?).\n• 'Say' không đi trực tiếp với tân ngữ chỉ người ('say me' là sai, phải là 'say to me' hoặc 'tell me').\n• 'Should you show me': Mang nghĩa 'Liệu bạn có nên chỉ cho tôi', không dùng để hỏi đường lịch sự.\n• 'Do you tell me': Không mang sắc thái thỉnh cầu, nhờ giúp đỡ.",
+    translation: "– A: “Bạn có thể cho tôi biết bưu điện gần nhất ở đâu không?”\n– B: “Hãy rẽ trái rồi sau đó rẽ phải nhé.”\n\n• A. Bạn có nên chỉ cho tôi\n• B. Bạn có thể cho tôi biết (Đúng)\n• C. Bạn có nói cho tôi\n• D. Bạn sẽ nói tôi (Sai ngữ pháp)"
+  },
+  {
+    id: 5,
+    speaker: "A & B",
+    dialogue: "– A: “Do you think you’ll get the job?\n– B: “_______.”",
+    options: {
+      A: "Yes, that’s right",
+      B: "I think not",
+      C: "I know so",
+      D: "Well, I hope so"
+    },
+    correct: "D",
+    explanation: "Khi được hỏi về khả năng xảy ra một sự việc trong tương lai ('Do you think you'll get the job?'), câu trả lời khiêm tốn và tự nhiên nhất là 'Well, I hope so' (À, tôi hi vọng là vậy).\n• Khi diễn tả phủ định với think, người Anh-Mỹ nói 'I don't think so' chứ không nói 'I think not'.\n• 'Yes, that’s right': Dùng để xác nhận một nhận định là đúng sự thật.",
+    translation: "– A: “Bạn có nghĩ là bạn sẽ nhận được công việc đó không?”\n– B: “À, tôi hy vọng là như vậy.”\n\n• A. Vâng, đúng rồi\n• B. Tôi nghĩ là không (không tự nhiên)\n• C. Tôi biết chắc thế\n• D. À, tôi hy vọng là vậy (Đúng)"
+  },
+  {
+    id: 6,
+    speaker: "A & B",
+    dialogue: "– A: “Happy Christmas!”\n– B: “_______”",
+    options: {
+      A: "You are the same!",
+      B: "Happy Christmas with you!",
+      C: "The same to you!",
+      D: "Same for you!"
+    },
+    correct: "C",
+    explanation: "Khi nhận lời chúc mừng lễ hội (Christmas, New Year, Happy Birthday,...), câu đáp lễ thông dụng và chuẩn mực nhất là 'The same to you!' (Chúc bạn cũng như vậy nhé!).\n• Các phương án A, B, D sai quy ước diễn đạt trong tiếng Anh giao tiếp.",
+    translation: "– A: “Chúc bạn Giáng sinh vui vẻ!”\n– B: “Bạn cũng vậy nhé!”\n\n• A. Bạn cũng thế (sai ngữ cảnh)\n• B. Giáng sinh vui vẻ với bạn (sai ngữ pháp)\n• C. Bạn cũng vậy nhé! (Đúng chuẩn)\n• D. Giống cho bạn (sai ngữ pháp)"
+  },
+  {
+    id: 7,
+    speaker: "A & B",
+    dialogue: "– A: “Thank you very much for a lovely party.”\n– B: “_______.”",
+    options: {
+      A: "Cheers",
+      B: "Thanks",
+      C: "Have a good day",
+      D: "You’re welcome"
+    },
+    correct: "D",
+    explanation: "Đáp lại lời cảm ơn chân thành 'Thank you very much for...' là câu 'You're welcome' (Không có chi đâu / Rất hân hạnh).\n• 'Cheers': Dùng khi nâng ly cụng chén hoặc chào tạm biệt thân mật.\n• 'Thanks': Cảm ơn người khác (không dùng đáp lại lời cảm ơn).\n• 'Have a good day': Chúc ngày mới tốt lành khi chia tay.",
+    translation: "– A: “Cảm ơn bạn rất nhiều vì một bữa tiệc thật tuyệt vời.”\n– B: “Không có chi đâu mà!”\n\n• A. Nâng ly / Chúc mừng\n• B. Cảm ơn\n• C. Chúc một ngày tốt lành\n• D. Không có chi đâu (Đúng)"
+  },
+  {
+    id: 8,
+    speaker: "A & B",
+    dialogue: "– A: “Would you like something to eat?”\n– B: “_______. I'm not hungry now.”",
+    options: {
+      A: "Yes, I would",
+      B: "No, no problem",
+      C: "No, thanks",
+      D: "Yes, it is"
+    },
+    correct: "C",
+    explanation: "Vế sau có giải thích 'I'm not hungry now' (Bây giờ tôi không đói), vì vậy vế trước phải là lời từ chối lịch sự đối với lời mời đồ ăn thức uống: 'No, thanks' (Không, cảm ơn bạn nhé).\n• 'Yes, I would': Đồng ý (mâu thuẫn với vế sau).\n• 'No, no problem': Dùng đáp lại lời xin lỗi hoặc cảm ơn, không dùng từ chối đồ ăn.",
+    translation: "– A: “Bạn có muốn ăn chút gì không?”\n– B: “Không, cảm ơn nhé. Bây giờ tôi không thấy đói.”\n\n• A. Có, tôi muốn\n• B. Không, không có vấn đề gì\n• C. Không, cảm ơn nhé (Đúng)\n• D. Vâng, đúng vậy"
+  },
+  {
+    id: 9,
+    speaker: "A & B",
+    dialogue: "– A: “Could you bring me some water?”\n– B: “_______.”",
+    options: {
+      A: "Certainly, sir",
+      B: "Yes, I can",
+      C: "I don’t want to",
+      D: "No, I can’t"
+    },
+    correct: "A",
+    explanation: "Khi khách hàng đưa ra yêu cầu lịch sự 'Could you bring me...?', người phục vụ đồng ý một cách chuẩn mực và lịch sự bằng câu: 'Certainly, sir' (Chắc chắn rồi, thưa quý khách/ngài).\n• 'Yes, I can': Nói về khả năng làm được việc gì, nghe cộc lốc và thiếu tính phục vụ lịch sự.\n• 'I don’t want to' / 'No, I can't': Thiếu lịch sự, từ chối thô lỗ.",
+    translation: "– A: “Bạn có thể mang giúp tôi một ít nước được không?”\n– B: “Chắc chắn rồi, thưa quý khách.”\n\n• A. Chắc chắn rồi, thưa quý khách (Đúng chuẩn phục vụ)\n• B. Vâng, tôi có thể\n• C. Tôi không muốn\n• D. Không, tôi không thể"
+  },
+  {
+    id: 10,
+    speaker: "Sue & Tom",
+    dialogue: "– Sue: “I’ve got an interview for a job tomorrow.”\n– Tom: “_________.”",
+    options: {
+      A: "See you",
+      B: "Good luck",
+      C: "Come on",
+      D: "Thank you"
+    },
+    correct: "B",
+    explanation: "Khi ai đó chuẩn bị bước vào một sự kiện quan trọng và có tính cạnh tranh như phỏng vấn xin việc ('interview for a job'), câu động viên chuẩn xác nhất là 'Good luck' (Chúc may mắn nhé!).\n• 'See you': Hẹn gặp lại.\n• 'Come on': Thôi nào / Nhanh lên nào.\n• 'Thank you': Cảm ơn.",
+    translation: "– Sue: “Ngày mai tôi có một buổi phỏng vấn xin việc đấy.”\n– Tom: “Chúc bạn may mắn nhé!”\n\n• A. Hẹn gặp lại\n• B. Chúc may mắn! (Đúng)\n• C. Cố lên nào / Thôi nào\n• D. Cảm ơn"
+  },
+  {
+    id: 11,
+    speaker: "A & B",
+    dialogue: "– A: “Have you ever been to France?”\n– B: “_______”",
+    options: {
+      A: "No. How about you?",
+      B: "Yes, I did.",
+      C: "Oh, really?",
+      D: "No problem."
+    },
+    correct: "A",
+    explanation: "Câu hỏi ở thì Hiện tại hoàn thành 'Have you ever been...?'.\n• Đáp án A 'No. How about you?' (Chưa từng. Còn bạn thì sao?) diễn đạt tự nhiên và đúng thì.\n• Phương án B sai vì hỏi 'Have you...' phải trả lời 'Yes, I have', không được trả lời 'Yes, I did'.",
+    translation: "– A: “Bạn đã từng đến nước Pháp bao giờ chưa?”\n– B: “Chưa từng. Còn bạn thì sao?”\n\n• A. Chưa từng. Còn bạn thì sao? (Đúng)\n• B. Vâng, tôi đã làm (Sai thì)\n• C. Ồ, thật thế ư?\n• D. Không thành vấn đề."
+  },
+  {
+    id: 12,
+    speaker: "A & B",
+    dialogue: "– A: “How much rice would you like?”\n– B: “_______”",
+    options: {
+      A: "Just a few, thanks.",
+      B: "A lot, please.",
+      C: "Yes, I would.",
+      D: "Good."
+    },
+    correct: "B",
+    explanation: "'Rice' (gạo, cơm) là danh từ không đếm được (uncountable noun).\n• 'A few' chỉ dùng với danh từ đếm được số nhiều nên phương án A loại.\n• Câu hỏi số lượng 'How much...', phương án 'A lot, please.' (Cho tôi nhiều nhé, làm ơn) là câu trả lời đúng ngữ pháp và lịch sự.",
+    translation: "– A: “Bạn muốn dùng bao nhiêu cơm?”\n– B: “Cho tôi nhiều một chút nhé, làm ơn.”\n\n• A. Chỉ một vài hạt (Sai vì rice không đếm được)\n• B. Cho tôi nhiều nhé, làm ơn (Đúng)\n• C. Vâng, tôi muốn (Không trả lời lượng)\n• D. Tốt"
+  },
+  {
+    id: 13,
+    speaker: "A & B",
+    dialogue: "– A: “I have to study this weekend.”\n– B: “_______”",
+    options: {
+      A: "That’s too bad.",
+      B: "Yes, actually.",
+      C: "Well, maybe.",
+      D: "Great."
+    },
+    correct: "A",
+    explanation: "A phải bận học vào cuối tuần (một sự việc không mấy vui thích so với việc được đi chơi nghỉ ngơi), B bày tỏ sự cảm thông, tiếc nuối: 'That’s too bad.' (Tệ thật đấy / Tiếc quá nhỉ).\n• 'Great': Tuyệt vời (vô cảm khi bạn mình phải vất vả học hành).",
+    translation: "– A: “Cuối tuần này tôi phải học bài rồi.”\n– B: “Tiếc thật đấy / Tệ thật nhỉ.”\n\n• A. Tệ thật đấy / Tiếc quá nhỉ (Đúng)\n• B. Vâng, thực ra là vậy\n• C. À, có lẽ thế\n• D. Tuyệt vời"
+  },
+  {
+    id: 14,
+    speaker: "A & B",
+    dialogue: "– A: “Would you like some peas?”\n– B: “_______”",
+    options: {
+      A: "Yes, I do.",
+      B: "Here you are.",
+      C: "Just a few.",
+      D: "No."
+    },
+    correct: "C",
+    explanation: "'Peas' (hạt đậu Hà Lan) là danh từ đếm được số nhiều. Khi được mời món ăn, câu trả lời chỉ lượng mong muốn nhận là 'Just a few.' (Chỉ một ít thôi nhé).\n• 'Yes, I do' sai vì câu hỏi bắt đầu bằng 'Would you like', không phải 'Do you like'.\n• 'Here you are' dùng khi trao đồ vật cho ai đó.",
+    translation: "– A: “Bạn có muốn dùng thêm chút đậu Hà Lan không?”\n– B: “Chỉ một ít thôi nhé.”\n\n• A. Vâng, tôi làm (Sai trợ động từ)\n• B. Của bạn đây\n• C. Chỉ một ít thôi nhé (Đúng)\n• D. Không (cộc lốc, bất lịch sự)"
+  },
+  {
+    id: 15,
+    speaker: "A & B",
+    dialogue: "– A: “You don’t have to pay.”\n– B: “_______”",
+    options: {
+      A: "It sounds expensive.",
+      B: "That’s great.",
+      C: "Certainly. How much is it?",
+      D: "All right."
+    },
+    correct: "B",
+    explanation: "Khi nghe thông báo bạn không cần phải trả tiền ('You don't have to pay' - được miễn phí), phản ứng vui mừng hợp lý là 'That’s great.' (Thế thì tuyệt vời quá!).\n• Các phương án A và C hỏi giá tiền hoặc nói đắt đỏ là hoàn toàn mâu thuẫn với việc được miễn phí.",
+    translation: "– A: “Bạn không cần phải trả tiền đâu.”\n– B: “Thế thì tuyệt vời quá!”\n\n• A. Nghe có vẻ đắt đỏ\n• B. Tuyệt vời quá! (Đúng)\n• C. Chắc chắn rồi. Hết bao nhiêu tiền?\n• D. Được rồi"
+  },
+  {
+    id: 16,
+    speaker: "A & B",
+    dialogue: "– A: “I don’t feel very well.”\n– B: “_______”",
+    options: {
+      A: "No, you don’t.",
+      B: "Wow!",
+      C: "What’s wrong?",
+      D: "Yeah!"
+    },
+    correct: "C",
+    explanation: "Khi ai đó than phiền về sức khỏe không tốt ('I don't feel very well'), người đối thoại ân cần hỏi thăm xem có vấn đề gì: 'What’s wrong?' (Có chuyện gì thế? / Bạn bị sao vậy?).\n• 'Wow!' / 'Yeah!' thể hiện sự phấn khích, hào hứng, không phù hợp khi nghe tin xấu.",
+    translation: "– A: “Tôi cảm thấy không được khỏe cho lắm.”\n– B: “Có chuyện gì thế? / Bạn bị làm sao vậy?”\n\n• A. Không, bạn không thế\n• B. Ồ tuyệt (Sai ngữ cảnh)\n• C. Có chuyện gì thế? (Đúng)\n• D. Đúng rồi!"
+  },
+  {
+    id: 17,
+    speaker: "A & B",
+    dialogue: "– A: “Sorry, I have to go now.”\n– B: “_______”",
+    options: {
+      A: "Where do you go?",
+      B: "OK. Bye.",
+      C: "Why not?",
+      D: "Let’s!"
+    },
+    correct: "B",
+    explanation: "Khi ai đó xin phép phải rời đi ngay ('Sorry, I have to go now'), câu chào tạm biệt ngắn gọn và thích hợp nhất là 'OK. Bye.' (Được rồi. Tạm biệt nhé!).\n• 'Where do you go?': Sai thì (nếu hỏi phải là 'Where are you going?').\n• 'Let's!': Dùng để rủ rê cùng làm gì.",
+    translation: "– A: “Xin lỗi, bây giờ tôi phải đi rồi.”\n– B: “Được rồi. Tạm biệt nhé!”\n\n• A. Bạn đi đâu? (Sai ngữ pháp)\n• B. Được rồi. Tạm biệt nhé! (Đúng)\n• C. Tại sao không?\n• D. Chúng ta cùng làm đi!"
+  },
+  {
+    id: 18,
+    speaker: "A & B",
+    dialogue: "– A: “Why don’t you lie down and rest for a while?”\n– B: “_______”",
+    options: {
+      A: "Really? Why not?",
+      B: "Yes, you should.",
+      C: "OK. That’s a good idea.",
+      D: "Certainly, I’m fine."
+    },
+    correct: "C",
+    explanation: "Mẫu câu 'Why don’t you + V...?' được dùng để đưa ra lời khuyên hoặc gợi ý. Để tiếp thu và đồng ý với lời khuyên, ta đáp: 'OK. That’s a good idea.' (Được thôi. Đó là một ý kiến hay).\n• 'Yes, you should' dùng khi khuyên người khác, không phải nhận lời khuyên cho chính mình.",
+    translation: "– A: “Sao bạn không nằm xuống và nghỉ ngơi một chút đi?”\n– B: “Được thôi. Đó là một ý kiến hay.”\n\n• A. Thật ư? Tại sao không?\n• B. Vâng, bạn nên làm vậy (Sai đại từ)\n• C. Được thôi. Đó là ý hay. (Đúng)\n• D. Chắc chắn rồi, tôi khỏe"
+  },
+  {
+    id: 19,
+    speaker: "A & B",
+    dialogue: "– A: “I’ve just bought a bigger car.”\n– B: “_______”",
+    options: {
+      A: "Good for you.",
+      B: "What’s the matter?",
+      C: "Yes, that sounds fantastic.",
+      D: "Poor you!"
+    },
+    correct: "A",
+    explanation: "'Good for you' là thành ngữ thông dụng để bày tỏ sự vui mừng cho ai đó khi họ có được một điều tốt đẹp hoặc đạt được mục tiêu mong muốn ('Mừng cho bạn nhé!').\n• 'Poor you!': Tội nghiệp bạn quá (chỉ dùng chia buồn khi ai đó gặp điều không may).",
+    translation: "– A: “Tôi vừa mới mua một chiếc xe ô tô to hơn đấy.”\n– B: “Mừng cho bạn nhé!”\n\n• A. Mừng cho bạn nhé! (Đúng)\n• B. Có chuyện gì thế?\n• C. Vâng, nghe có vẻ tuyệt vời\n• D. Tội nghiệp bạn quá!"
+  },
+  {
+    id: 20,
+    speaker: "A & B",
+    dialogue: "– A: “Here’s the medicine you wanted.”\n– B: “_______”",
+    options: {
+      A: "My pleasure.",
+      B: "What’s up?",
+      C: "That’s great.",
+      D: "Really?"
+    },
+    correct: "C",
+    explanation: "Khi ai đó mang thuốc bạn đang cần tới cho bạn ('Here's the medicine you wanted'), lời cảm ơn/tán thưởng phù hợp là 'That’s great.' (Tuyệt quá / Cảm ơn nhé).\n• 'My pleasure': Dùng đáp lại lời cảm ơn ('Rất hân hạnh').",
+    translation: "– A: “Đây là thuốc mà bạn cần này.”\n– B: “Tuyệt quá, cảm ơn nhé.”\n\n• A. Niềm vinh hạnh của tôi\n• B. Dạo này thế nào?\n• C. Tuyệt quá (Đúng)\n• D. Thật sao?"
+  },
+  {
+    id: 21,
+    speaker: "A & B",
+    dialogue: "– A: “My sister is getting married next month.”\n– B: “________”",
+    options: {
+      A: "What a shame!",
+      B: "Congratulations to her!",
+      C: "Never mind.",
+      D: "That’s too bad!"
+    },
+    correct: "B",
+    explanation: "Chị gái sắp kết hôn ('getting married') là sự kiện trọng đại đáng mừng, nên lời chúc mừng thích hợp gửi tới chị gái là: 'Congratulations to her!' (Xin chúc mừng cô ấy nhé!).\n• 'What a shame!' và 'That's too bad!': Thật đáng tiếc / Tệ thật (dùng cho chuyện buồn).\n• 'Never mind': Đừng bận tâm.",
+    translation: "– A: “Chị gái tôi sẽ kết hôn vào tháng tới.”\n– B: “Xin chúc mừng cô ấy nhé!”\n\n• A. Thật đáng tiếc!\n• B. Xin chúc mừng cô ấy nhé! (Đúng)\n• C. Đừng bận tâm.\n• D. Tệ thật đấy!"
+  },
+  {
+    id: 22,
+    speaker: "A & B",
+    dialogue: "– A: “I’m sorry I forgot to return your book yesterday.”\n– B: “________”",
+    options: {
+      A: "That’s all right.",
+      B: "You’re welcome.",
+      C: "Here you are.",
+      D: "Good luck!"
+    },
+    correct: "A",
+    explanation: "Đáp lại lời xin lỗi 'I'm sorry...', người nghe bày tỏ sự tha thứ, thông cảm bằng: 'That’s all right.' (Không sao đâu mà / Có gì đâu).\n• 'You're welcome': Dùng để đáp lại lời cảm ơn.",
+    translation: "– A: “Tôi xin lỗi vì hôm qua đã quên trả sách cho bạn.”\n– B: “Không sao đâu mà.”\n\n• A. Không sao đâu mà. (Đúng)\n• B. Không có chi.\n• C. Của bạn đây.\n• D. Chúc may mắn!"
+  },
+  {
+    id: 23,
+    speaker: "A & B",
+    dialogue: "– A: “What are you going to do during the Mid-Autumn Festival?”\n– B: “________”",
+    options: {
+      A: "I went to the market yesterday.",
+      B: "I enjoy eating vegetables.",
+      C: "I’m going to take my children to a lantern parade.",
+      D: "I have visited that place twice."
+    },
+    correct: "C",
+    explanation: "Câu hỏi sử dụng cấu trúc tương lai gần 'What are you going to do...?' để hỏi về kế hoạch dự định. Câu trả lời chuẩn xác về ngữ pháp và thì phải là: 'I’m going to take my children to a lantern parade.' (Tôi dự định dẫn các con đi rước đèn lồng).\n• Các phương án A, B, D sai thì và lạc đề.",
+    translation: "– A: “Bạn dự định sẽ làm gì trong dịp Tết Trung thu?”\n– B: “Tôi dự định sẽ dẫn các con tôi đi rước đèn lồng.”\n\n• A. Hôm qua tôi đã đi chợ (Sai thì)\n• B. Tôi thích ăn rau (Lạc đề)\n• C. Tôi dự định dẫn con đi rước đèn (Đúng thì & ngữ cảnh)\n• D. Tôi đã đến đó hai lần (Sai thì)"
+  },
+  {
+    id: 24,
+    speaker: "A & B",
+    dialogue: "– A: “Do you usually help your parents with the housework at weekends?”\n– B: “________”",
+    options: {
+      A: "Yes, I am, especially on Sundays.",
+      B: "Yes, I do, especially on Sundays.",
+      C: "Yes, I did, especially last Sunday.",
+      D: "Yes, I have, especially on Sundays."
+    },
+    correct: "B",
+    explanation: "Câu hỏi thì Hiện tại đơn với trợ động từ 'Do you...?'. Câu trả lời ngắn khẳng định phải sử dụng trợ động từ tương ứng: 'Yes, I do' (kèm theo ngữ cảnh thời gian phù hợp: especially on Sundays).\n• Phương án A dùng 'am' (sai to be), C dùng 'did' (sai thì quá khứ), D dùng 'have' (sai thì hoàn thành).",
+    translation: "– A: “Bạn có thường giúp bố mẹ làm việc nhà vào cuối tuần không?”\n– B: “Có chứ, đặc biệt là vào những ngày Chủ nhật.”\n\n• A. Có (sai dùng am)\n• B. Có chứ, đặc biệt là vào Chủ nhật. (Đúng chuẩn ngữ pháp)\n• C. Có, nhất là Chủ nhật tuần trước (Sai thì)\n• D. Có (sai dùng have)"
+  },
+  {
+    id: 25,
+    speaker: "A & B",
+    dialogue: "– A: “You look exhausted. You should get some rest.”\n– B: “________”",
+    options: {
+      A: "I’m glad you enjoyed it.",
+      B: "You’re right. I’ve been working too hard lately.",
+      C: "It doesn’t matter where you go.",
+      D: "I don’t think it belongs to me."
+    },
+    correct: "B",
+    explanation: "A nhận thấy bạn trông kiệt sức và khuyên nên nghỉ ngơi. B đồng tình với lời nhận xét và đưa ra nguyên nhân: 'You’re right. I’ve been working too hard lately.' (Bạn nói đúng. Gần đây tôi làm việc cật lực quá).",
+    translation: "– A: “Trông bạn kiệt sức rồi. Bạn nên nghỉ ngơi một chút đi.”\n– B: “Bạn nói đúng. Dạo này tôi làm việc quá sức thật.”\n\n• A. Tôi rất vui vì bạn thích nó\n• B. Bạn nói đúng. Dạo này tôi làm việc quá sức thật. (Đúng)\n• C. Đi đâu cũng không quan trọng\n• D. Tôi không nghĩ nó thuộc về tôi"
+  },
+  {
+    id: 26,
+    speaker: "A & B",
+    dialogue: "– A: “How was your trip to Da Lat last weekend?”\n– B: “________”",
+    options: {
+      A: "I’m leaving tomorrow morning.",
+      B: "I usually travel by bus.",
+      C: "It was wonderful. The weather was cooler than in Ho Chi Minh City.",
+      D: "I have to book a hotel now."
+    },
+    correct: "C",
+    explanation: "Câu hỏi ở thì Quá khứ đơn hỏi về chuyến đi đã kết thúc vào cuối tuần trước ('How was your trip... last weekend?'). Câu trả lời tương ứng là thì Quá khứ: 'It was wonderful. The weather was cooler than in Ho Chi Minh City.'",
+    translation: "– A: “Chuyến đi Đà Lạt của bạn vào cuối tuần trước thế nào?”\n– B: “Tuyệt vời lắm. Thời tiết ở đó mát mẻ hơn ở TP. Hồ Chí Minh.”\n\n• A. Sáng mai tôi sẽ đi (Sai thì tương lai)\n• B. Tôi thường đi xe buýt (Sai thói quen)\n• C. Tuyệt vời lắm. Thời tiết mát mẻ hơn TP.HCM. (Đúng)\n• D. Bây giờ tôi phải đặt khách sạn (Sai thì)"
+  },
+  {
+    id: 27,
+    speaker: "A & B",
+    dialogue: "– A: “Would you like some more orange juice?”\n– B: “________”",
+    options: {
+      A: "Yes, please. It’s delicious.",
+      B: "Yes, I like oranges yesterday.",
+      C: "No, I didn’t drink it tomorrow.",
+      D: "No, I’m not making juice."
+    },
+    correct: "A",
+    explanation: "Lời mời dùng thêm đồ uống 'Would you like some more...?'. Cách nhận lời mời lịch sự là 'Yes, please.' kèm lời khen món: 'It’s delicious.'\n• Các phương án B, C, D mâu thuẫn về thì và từ vựng chỉ thời gian (yesterday, tomorrow).",
+    translation: "– A: “Bạn có muốn dùng thêm một chút nước cam không?”\n– B: “Vâng, làm ơn cho tôi thêm. Nước cam ngon quá.”\n\n• A. Vâng, làm ơn. Nước cam ngon quá. (Đúng)\n• B. Có, hôm qua tôi thích cam (Sai thì)\n• C. Không, ngày mai tôi đã không uống (Vô nghĩa)\n• D. Không, tôi không đang làm nước ép"
+  },
+  {
+    id: 28,
+    speaker: "A & B",
+    dialogue: "– A: “I’ve just got a promotion at work!”\n– B: “________”",
+    options: {
+      A: "I’m sorry to hear that.",
+      B: "You should see a doctor.",
+      C: "That’s fantastic! You must be very pleased.",
+      D: "What a terrible experience!"
+    },
+    correct: "C",
+    explanation: "Được thăng chức ('got a promotion') là thành tựu sự nghiệp rất lớn. Lời đáp thích hợp để chia vui là: 'That’s fantastic! You must be very pleased.' (Thật tuyệt vời! Chắc hẳn bạn phải rất vui sướng).\n• Các phương án A, B, D dùng cho tình huống bệnh tật hoặc xui xẻo.",
+    translation: "– A: “Tôi vừa được thăng chức ở công ty rồi!”\n– B: “Thật là tuyệt vời! Chắc hẳn bạn phải rất vui sướng.”\n\n• A. Tôi rất tiếc khi nghe điều đó (dùng cho tin buồn)\n• B. Bạn nên đi khám bác sĩ đi (dùng khi ốm)\n• C. Thật tuyệt vời! Chắc hẳn bạn phải vui lắm. (Đúng)\n• D. Thật là một trải nghiệm kinh khủng!"
+  },
+  {
+    id: 29,
+    speaker: "A & B",
+    dialogue: "– A: “You mustn’t use your phone during the examination.”\n– B: “________”",
+    options: {
+      A: "I’m afraid I can’t agree with the weather.",
+      B: "Don’t worry. I’ll keep it switched off.",
+      C: "Yes, I used it last week.",
+      D: "That’s the most expensive phone."
+    },
+    correct: "B",
+    explanation: "Lời cấm sử dụng điện thoại trong phòng thi ('mustn't use your phone'). B đáp lại tuân thủ và trấn an: 'Don’t worry. I’ll keep it switched off.' (Đừng lo. Tôi sẽ tắt nguồn máy).\n• Các phương án A, C, D hoàn toàn không liên quan.",
+    translation: "– A: “Bạn không được phép dùng điện thoại trong giờ thi đâu đấy.”\n– B: “Đừng lo. Tôi sẽ tắt nguồn nó.”\n\n• A. Tôi e rằng tôi không đồng ý với thời tiết\n• B. Đừng lo. Tôi sẽ tắt nguồn máy. (Đúng)\n• C. Vâng, tuần trước tôi đã dùng\n• D. Đó là chiếc điện thoại đắt nhất"
+  },
+  {
+    id: 30,
+    speaker: "A & B",
+    dialogue: "– A: “Who usually cooks dinner in your family?”\n– B: “________”",
+    options: {
+      A: "My mother does, but my father helps at weekends.",
+      B: "My mother is cooking it yesterday.",
+      C: "My father cooked it tomorrow.",
+      D: "My parents have cooking dinner now."
+    },
+    correct: "A",
+    explanation: "Câu hỏi thì Hiện tại đơn hỏi về thói quen gia đình ('Who usually cooks...?'). Trả lời bằng Hiện tại đơn với trợ động từ thay thế 'does': 'My mother does, but my father helps at weekends.'\n• Các phương án B, C, D sai ngữ pháp thì (is cooking - yesterday, cooked - tomorrow, have cooking - now).",
+    translation: "– A: “Ai thường là người nấu bữa tối trong gia đình bạn?”\n– B: “Mẹ tôi nấu, nhưng bố tôi phụ giúp vào các ngày cuối tuần.”\n\n• A. Mẹ tôi nấu, nhưng bố giúp vào cuối tuần. (Đúng chuẩn ngữ pháp)\n• B. Mẹ tôi đang nấu hôm qua (Sai)\n• C. Bố tôi đã nấu ngày mai (Sai)\n• D. Bố mẹ tôi đã đang nấu bây giờ (Sai)"
+  },
+  {
+    id: 31,
+    speaker: "A & B",
+    dialogue: "– A: “What were you doing when I called you last night?”\n– B: “________”",
+    options: {
+      A: "I watch a film every evening.",
+      B: "I have watched that film twice.",
+      C: "I was preparing dinner for my family.",
+      D: "I am going to watch a film tomorrow."
+    },
+    correct: "C",
+    explanation: "Câu hỏi ở thì Quá khứ tiếp diễn hỏi về hành động đang diễn ra tại một thời điểm trong quá khứ ('What were you doing when I called you...?'). Câu trả lời phải dùng Quá khứ tiếp diễn: 'I was preparing dinner for my family.' (Lúc đó tôi đang chuẩn bị bữa tối cho gia đình).\n• Các câu A (hiện tại đơn), B (hiện tại hoàn thành), D (tương lai) đều sai thì.",
+    translation: "– A: “Tối qua bạn đang làm gì lúc tôi gọi điện thế?”\n– B: “Lúc đó tôi đang chuẩn bị bữa tối cho gia đình.”\n\n• A. Mỗi tối tôi đều xem phim (Sai thì)\n• B. Tôi đã xem phim đó hai lần (Sai thì)\n• C. Lúc đó tôi đang chuẩn bị bữa tối cho gia đình. (Đúng thì Quá khứ tiếp diễn)\n• D. Ngày mai tôi sẽ xem phim (Sai thì)"
+  },
+  {
+    id: 32,
+    speaker: "A & B",
+    dialogue: "– A: “Have you ever taken part in a traditional lantern festival?”\n– B: “________”",
+    options: {
+      A: "Yes, I take part in one every day yesterday.",
+      B: "Yes, I have. It was a memorable experience.",
+      C: "Yes, I am taking part in one last year.",
+      D: "Yes, I will have taken part in one last week."
+    },
+    correct: "B",
+    explanation: "Câu hỏi thì Hiện tại hoàn thành 'Have you ever taken part in...?'. Câu trả lời khẳng định đúng ngữ pháp là 'Yes, I have' kết hợp câu kể lại ấn tượng ở quá khứ: 'It was a memorable experience.' (Đó là một trải nghiệm rất đáng nhớ).\n• Các câu A, C, D phối hợp thì và trạng từ hoàn toàn sai lệch.",
+    translation: "– A: “Bạn đã từng tham gia lễ hội rước đèn truyền thống bao giờ chưa?”\n– B: “Tôi đã từng tham gia rồi. Đó là một trải nghiệm rất đáng nhớ.”\n\n• A. Có, hôm qua tôi tham gia mỗi ngày (Vô nghĩa)\n• B. Tôi từng tham gia rồi. Đó là trải nghiệm đáng nhớ. (Đúng)\n• C. Có, năm ngoái tôi đang tham gia (Sai)\n• D. Có, tuần trước tôi sẽ đã tham gia (Sai)"
+  },
+  {
+    id: 33,
+    speaker: "A & B",
+    dialogue: "– A: “Look at those dark clouds! It’s going to rain.”\n– B: “________”",
+    options: {
+      A: "You’re right. We should take an umbrella.",
+      B: "I rained heavily every morning.",
+      C: "I have taken an umbrella yesterday.",
+      D: "It is the most sunny day of the year."
+    },
+    correct: "A",
+    explanation: "A nhận định trời sắp mưa vì có dấu hiệu mây đen ('dark clouds! It's going to rain'). B đồng tình và đưa ra hành động hợp lý: 'You’re right. We should take an umbrella.' (Bạn nói đúng. Chúng ta nên mang theo một chiếc ô).",
+    translation: "– A: “Nhìn những đám mây đen kia kìa! Trời sắp mưa rồi đấy.”\n– B: “Bạn nói đúng. Chúng ta nên mang theo ô.”\n\n• A. Bạn nói đúng. Chúng ta nên mang theo ô. (Đúng)\n• B. Tôi đã mưa to mỗi sáng (Sai nghĩa)\n• C. Hôm qua tôi đã cầm ô (Sai thì)\n• D. Hôm nay là ngày nắng nhất trong năm (Mâu thuẫn)"
+  },
+  {
+    id: 34,
+    speaker: "A & B",
+    dialogue: "– A: “I’ve had a terrible headache since this morning.”\n– B: “________”",
+    options: {
+      A: "You ought to get some rest and see a doctor if it continues.",
+      B: "You ought to rest all afternoon yesterday.",
+      C: "You must drink more coffee.",
+      D: "You shouldn’t tell anyone."
+    },
+    correct: "A",
+    explanation: "A bị đau đầu dữ dội từ sáng đến giờ ('terrible headache'). Lời khuyên y tế chuẩn xác và hợp lý là: 'You ought to get some rest and see a doctor if it continues.' ('ought to' = nên; khuyên nghỉ ngơi và đi khám bác sĩ nếu cơn đau kéo dài).\n• B sai vì dùng 'yesterday', C uống thêm cà phê làm đau đầu hơn, D khuyên không được nói cho ai là vô lý.",
+    translation: "– A: “Tôi bị đau đầu khủng khiếp từ sáng đến giờ.”\n– B: “Bạn nên nghỉ ngơi và đi khám bác sĩ nếu cơn đau kéo dài.”\n\n• A. Bạn nên nghỉ ngơi và đi khám bác sĩ nếu cơn đau kéo dài. (Đúng)\n• B. Hôm qua bạn nên nghỉ ngơi cả chiều (Sai thời gian)\n• C. Bạn phải uống thêm nhiều cà phê\n• D. Bạn không nên kể cho ai biết"
+  },
+  {
+    id: 35,
+    speaker: "A & B",
+    dialogue: "– A: “Why do you prefer travelling by train?”\n– B: “________”",
+    options: {
+      A: "Because I enjoy looking at the scenery along the way.",
+      B: "Because the weather is good.",
+      C: "Because I must look at the scenery.",
+      D: "Because the train is slower than the bus."
+    },
+    correct: "A",
+    explanation: "Câu hỏi nguyên nhân thích đi du lịch bằng tàu hỏa ('Why do you prefer travelling by train?'). Câu trả lời đưa ra lý do tích cực và tự nhiên: 'Because I enjoy looking at the scenery along the way.' (Bởi vì tôi thích ngắm phong cảnh dọc đường đi).",
+    translation: "– A: “Tại sao bạn lại thích đi du lịch bằng tàu hỏa hơn?”\n– B: “Bởi vì tôi thích ngắm nhìn phong cảnh dọc đường đi.”\n\n• A. Bởi vì tôi thích ngắm cảnh dọc đường đi. (Đúng)\n• B. Bởi vì thời tiết đẹp\n• C. Bởi vì tôi bắt buộc phải ngắm cảnh\n• D. Bởi vì tàu hỏa chậm hơn xe buýt"
+  },
+  {
+    id: 36,
+    speaker: "A & B",
+    dialogue: "– A: “Which restaurant would you recommend for our anniversary dinner?”\n– B: “________”",
+    options: {
+      A: "The restaurant near the station is expensive.",
+      B: "I think Bella’s is the best restaurant in this area.",
+      C: "There is no room in this restaurant.",
+      D: "I recommend you going there last week."
+    },
+    correct: "B",
+    explanation: "Hỏi xin lời gợi ý nhà hàng cho bữa tiệc kỷ niệm ('Which restaurant would you recommend...?'). B đưa ra lời gợi ý nhiệt tình và phù hợp: 'I think Bella’s is the best restaurant in this area.' (Tôi nghĩ nhà hàng Bella's là ngon nhất khu vực này).",
+    translation: "– A: “Bạn có thể gợi ý nhà hàng nào cho bữa tối kỷ niệm của chúng tôi không?”\n– B: “Tôi nghĩ nhà hàng Bella's là tuyệt nhất ở khu vực này đấy.”\n\n• A. Nhà hàng gần ga thì đắt\n• B. Tôi nghĩ Bella's là nhà hàng tốt nhất khu này. (Đúng)\n• C. Nhà hàng này không còn chỗ trống\n• D. Tôi khuyên bạn đến đó tuần trước (Sai thì)"
+  },
+  {
+    id: 37,
+    speaker: "A & B",
+    dialogue: "– A: “I can’t finish this report by myself. There’s too much work.”\n– B: “________”",
+    options: {
+      A: "Would you like me to help you with it?",
+      B: "You must finish it yesterday.",
+      C: "Why don’t you finished it last week?",
+      D: "I’m glad you lost your job."
+    },
+    correct: "A",
+    explanation: "A gặp khó khăn vì quá tải công việc, không thể tự làm xong báo cáo ('can't finish this report by myself'). B đưa ra lời đề nghị giúp đỡ lịch sự: 'Would you like me to help you with it?' (Bạn có muốn tôi giúp một tay không?).",
+    translation: "– A: “Tôi không thể tự hoàn thành bản báo cáo này một mình được. Nhiều việc quá.”\n– B: “Bạn có muốn tôi giúp một tay không?”\n\n• A. Bạn có muốn tôi giúp một tay không? (Đúng)\n• B. Bạn phải hoàn thành nó ngày hôm qua (Sai)\n• C. Tại sao bạn không hoàn thành nó tuần trước? (Sai)\n• D. Tôi rất vui vì bạn bị mất việc (Ác ý)"
+  },
+  {
+    id: 38,
+    speaker: "A & B",
+    dialogue: "– A: “Do we have to wear uniforms at the factory?”\n– B: “________”",
+    options: {
+      A: "No, we mustn’t. It’s not allowed.",
+      B: "Yes, we do. It’s part of the dress code.",
+      C: "Yes, we had to. We start work at 8 a.m.",
+      D: "No, we don’t have wearing them."
+    },
+    correct: "B",
+    explanation: "Câu hỏi 'Do we have to wear...?' hỏi về quy định đồng phục. Câu trả lời khẳng định chuẩn xác: 'Yes, we do. It’s part of the dress code.' (Có chứ. Đó là một phần quy định về trang phục).\n• A sai nghĩa ('mustn't' = bị cấm).\n• C sai thì ('had to').\n• D sai ngữ pháp ('don't have to wear' mới đúng).",
+    translation: "– A: “Chúng ta có phải mặc đồng phục ở nhà máy không?”\n– B: “Có chứ. Đó là một phần quy định về trang phục của nơi này.”\n\n• A. Không, chúng ta không được phép mặc (Sai nghĩa)\n• B. Có chứ. Đó là một phần quy định trang phục. (Đúng)\n• C. Có, chúng tôi đã phải (Sai thì)\n• D. Không, chúng tôi không có mặc (Sai ngữ pháp)"
+  },
+  {
+    id: 39,
+    speaker: "A & B",
+    dialogue: "– A: “I heard you’re moving to a new apartment next week.”\n– B: “________”",
+    options: {
+      A: "Yes, I moved there next month.",
+      B: "Yes, I moved there last weekend.",
+      C: "Yes, I’m moving there next Friday.",
+      D: "Yes, I have moved there yesterday."
+    },
+    correct: "C",
+    explanation: "A nghe nói B sắp chuyển nhà tuần tới ('moving to a new apartment next week'). B xác nhận kế hoạch tương lai gần bằng thì Hiện tại tiếp diễn: 'Yes, I’m moving there next Friday.' (Đúng vậy, tôi sẽ chuyển đến đó vào thứ Sáu tuần tới).\n• Các phương án A, B, D kết hợp sai giữa thì động từ và trạng từ thời gian.",
+    translation: "– A: “Tôi nghe nói tuần tới bạn sẽ chuyển sang căn hộ mới à.”\n– B: “Đúng rồi, tôi sẽ chuyển đến đó vào thứ Sáu tới.”\n\n• A. Có, tháng tới tôi đã chuyển (Sai)\n• B. Có, cuối tuần trước tôi đã chuyển (Mâu thuẫn với next week)\n• C. Đúng rồi, tôi sẽ chuyển đến đó vào thứ Sáu tới. (Đúng)\n• D. Có, hôm qua tôi đã chuyển (Sai)"
+  },
+  {
+    id: 40,
+    speaker: "A & B",
+    dialogue: "– A: “I’m thinking of visiting Phu Quoc this summer, but I’m worried about the cost.”\n– B: “________”",
+    options: {
+      A: "You could book your flights early to save money.",
+      B: "You must buy the most expensive tickets.",
+      C: "You should spend all your money on hotels.",
+      D: "You ought not to book anything in advance."
+    },
+    correct: "A",
+    explanation: "A lo lắng về chi phí chuyến đi ('worried about the cost'). B đưa ra lời khuyên hữu ích để tiết kiệm: 'You could book your flights early to save money.' (Bạn có thể đặt vé máy bay sớm để tiết kiệm tiền).\n• Các phương án B, C, D đều xúi giục tiêu tiền hoang phí hoặc không đặt trước, đi ngược lại mục đích tiết kiệm chi phí.",
+    translation: "– A: “Tôi đang tính đi Phú Quốc vào mùa hè này, nhưng tôi lo về chi phí quá.”\n– B: “Bạn có thể đặt vé máy bay sớm để tiết kiệm tiền.”\n\n• A. Bạn có thể đặt vé máy bay sớm để tiết kiệm tiền. (Đúng)\n• B. Bạn phải mua những tấm vé đắt nhất\n• C. Bạn nên tiêu hết tiền vào khách sạn\n• D. Bạn không nên đặt bất cứ thứ gì trước"
+  }
+];
+
+/**
+ * APPLICATION LOGIC - ENGLISH 2: EXCHANGE (40 MULTIPLE-CHOICE QUESTIONS)
+ * Trường Cao đẳng Công nghệ Thủ Đức (TDC)
+ */
+
+// Safe storage helpers to prevent SecurityError in restricted environments
+const safeStorage = {
+  getItem: (key, fallback = "") => {
+    try {
+      return localStorage.getItem(key) || fallback;
+    } catch (e) {
+      return fallback;
+    }
+  },
+  setItem: (key, val) => {
+    try {
+      localStorage.setItem(key, val);
+    } catch (e) {}
+  }
+};
+
+const safeSession = {
+  getItem: (key, fallback = "") => {
+    try {
+      return sessionStorage.getItem(key) || fallback;
+    } catch (e) {
+      return fallback;
+    }
+  },
+  setItem: (key, val) => {
+    try {
+      sessionStorage.setItem(key, val);
+    } catch (e) {}
+  }
+};
+
+document.addEventListener("DOMContentLoaded", () => {
+  // State management
+  const state = {
+    student: {
+      name: safeStorage.getItem("tdc_student_name", ""),
+      id: safeStorage.getItem("tdc_student_id", ""),
+      classroom: safeStorage.getItem("tdc_student_class", "")
+    },
+    answers: {},       // { 1: 'A', 2: 'B', ... }
+    flags: new Set(),  // Set of flagged question IDs
+    isSubmitted: false,
+    startTime: Date.now(),
+    endTime: null,
+    timeLimitSeconds: 40 * 60, // 40 minutes
+    remainingSeconds: 40 * 60,
+    timerInterval: null,
+    filterMode: 'all', // 'all', 'correct', 'incorrect'
+    visitorCount: 0
+  };
+
+  // DOM Elements
+  const questionsContainer = document.getElementById("questionsContainer");
+  const questionsGrid = document.getElementById("questionsGrid");
+  const progressText = document.getElementById("progressText");
+  const progressBarFill = document.getElementById("progressBarFill");
+  const timerDisplay = document.getElementById("timerDisplay");
+  const timerBox = document.getElementById("timerBox");
+  const visitorCountEl = document.getElementById("visitorCount");
+
+  // Results elements
+  const resultsSummaryCard = document.getElementById("resultsSummaryCard");
+  const reviewFilterBar = document.getElementById("reviewFilterBar");
+  const scoreRawEl = document.getElementById("scoreRaw");
+  const scoreScale10El = document.getElementById("scoreScale10");
+  const scorePercentageEl = document.getElementById("scorePercentage");
+  const timeTakenEl = document.getElementById("timeTaken");
+  const scoreRatingEl = document.getElementById("scoreRating");
+  const correctCountEl = document.getElementById("correctCount");
+  const wrongCountEl = document.getElementById("wrongCount");
+
+  // Modals
+  const studentModal = document.getElementById("studentModal");
+  const submitConfirmModal = document.getElementById("submitConfirmModal");
+  const teacherModal = document.getElementById("teacherModal");
+
+  // Student info elements
+  const studentNameDisplay = document.getElementById("studentNameDisplay");
+  const studentIdDisplay = document.getElementById("studentIdDisplay");
+  const studentClassDisplay = document.getElementById("studentClassDisplay");
+
+  /* ================= 1. VISITOR COUNTER ================= */
+  async function initVisitorCounter() {
+    const namespace = "tdc-english2-exchange";
+    const key = "page-visits";
+    const storageKey = "tdc_cached_visits";
+
+    let localVisits = parseInt(safeStorage.getItem(storageKey, "1"), 10);
+    const hasVisitedSession = safeSession.getItem("tdc_visited");
+
+    if (!hasVisitedSession) {
+      localVisits += 1;
+      safeStorage.setItem(storageKey, localVisits);
+      safeSession.setItem("tdc_visited", "true");
+    }
+
+    if (visitorCountEl) visitorCountEl.textContent = localVisits;
+    state.visitorCount = localVisits;
+
+    try {
+      const url = `https://api.counterapi.dev/v1/${namespace}/${key}/up`;
+      const res = await fetch(url, { method: "GET" });
+      if (res.ok) {
+        const data = await res.json();
+        if (data && typeof data.count === "number") {
+          if (visitorCountEl) visitorCountEl.textContent = data.count;
+          state.visitorCount = data.count;
+          safeStorage.setItem(storageKey, data.count);
+          const adminTotal = document.getElementById("teacherVisitorTotal");
+          if (adminTotal) adminTotal.textContent = data.count;
+        }
+      }
+    } catch (err) {
+      console.log("Visitor API using local count:", err);
+    }
+  }
+
+  /* ================= 2. STUDENT INFO ================= */
+  function updateStudentDisplay() {
+    if (studentNameDisplay) studentNameDisplay.textContent = state.student.name || "Chưa nhập (Bấm để nhập)";
+    if (studentIdDisplay) studentIdDisplay.textContent = state.student.id || "Chưa nhập";
+    if (studentClassDisplay) studentClassDisplay.textContent = state.student.classroom || "Chưa nhập";
+
+    const inName = document.getElementById("inputStudentName");
+    const inId = document.getElementById("inputStudentId");
+    const inClass = document.getElementById("inputStudentClass");
+    if (inName) inName.value = state.student.name;
+    if (inId) inId.value = state.student.id;
+    if (inClass) inClass.value = state.student.classroom;
+  }
+
+  window.openStudentModal = function() {
+    if (studentModal) studentModal.classList.add("open");
+  };
+
+  window.closeStudentModal = function() {
+    if (studentModal) studentModal.classList.remove("open");
+  };
+
+  window.saveStudentInfo = function(e) {
+    if (e) e.preventDefault();
+    const inName = document.getElementById("inputStudentName");
+    const inId = document.getElementById("inputStudentId");
+    const inClass = document.getElementById("inputStudentClass");
+
+    state.student.name = inName ? inName.value.trim() : "";
+    state.student.id = inId ? inId.value.trim() : "";
+    state.student.classroom = inClass ? inClass.value.trim() : "";
+
+    safeStorage.setItem("tdc_student_name", state.student.name);
+    safeStorage.setItem("tdc_student_id", state.student.id);
+    safeStorage.setItem("tdc_student_class", state.student.classroom);
+
+    updateStudentDisplay();
+    closeStudentModal();
+  };
+
+  /* ================= 3. TIMER ================= */
+  function startTimer() {
+    if (state.timerInterval) clearInterval(state.timerInterval);
+    state.timerInterval = setInterval(() => {
+      if (state.isSubmitted) {
+        clearInterval(state.timerInterval);
+        return;
+      }
+
+      state.remainingSeconds--;
+
+      if (state.remainingSeconds <= 0) {
+        state.remainingSeconds = 0;
+        updateTimerDisplay();
+        clearInterval(state.timerInterval);
+        alert("⏰ Đã hết thời gian làm bài! Hệ thống sẽ tự động nộp bài của bạn.");
+        submitExam(true);
+        return;
+      }
+
+      updateTimerDisplay();
+    }, 1000);
+  }
+
+  function updateTimerDisplay() {
+    if (!timerDisplay) return;
+    const mins = Math.floor(state.remainingSeconds / 60);
+    const secs = state.remainingSeconds % 60;
+    timerDisplay.textContent = `${String(mins).padStart(2, "0")}:${String(secs).padStart(2, "0")}`;
+
+    if (timerBox) {
+      if (state.remainingSeconds <= 300) {
+        timerBox.classList.add("timer-warning");
+      } else {
+        timerBox.classList.remove("timer-warning");
+      }
+    }
+  }
+
+  /* ================= 4. RENDER QUESTIONS & PALETTE ================= */
+  function renderQuestions() {
+    if (!questionsContainer || !questionsGrid) return;
+    questionsContainer.innerHTML = "";
+    questionsGrid.innerHTML = "";
+
+    if (typeof questionsData === "undefined" || !Array.isArray(questionsData)) {
+      questionsContainer.innerHTML = `<p style="color:red; padding:20px;">Không tìm thấy dữ liệu câu hỏi!</p>`;
+      return;
+    }
+
+    questionsData.forEach((q) => {
+      // 1. Create Question Card
+      const card = document.createElement("div");
+      card.className = "question-card";
+      card.id = `qCard_${q.id}`;
+
+      // Build options HTML
+      const optionsHtml = Object.entries(q.options).map(([key, val]) => `
+        <label class="option-item" id="opt_${q.id}_${key}" onclick="selectAnswer(${q.id}, '${key}')">
+          <input type="radio" name="question_${q.id}" value="${key}" class="option-radio">
+          <div class="option-key">${key}</div>
+          <div class="option-text">${val}</div>
+        </label>
+      `).join("");
+
+      card.innerHTML = `
+        <div class="question-header">
+          <div class="question-num-badge">
+            <span>Câu ${q.id} / ${questionsData.length}</span>
+          </div>
+          <div class="question-actions-right">
+            <span class="question-status-tag" id="statusTag_${q.id}"></span>
+            <button type="button" class="btn-flag" id="btnFlag_${q.id}" onclick="toggleFlag(${q.id})">
+              <span>★</span> Đánh dấu
+            </button>
+          </div>
+        </div>
+
+        <div class="question-dialogue">${q.dialogue}</div>
+
+        <div class="options-group">
+          ${optionsHtml}
+        </div>
+
+        <div class="solution-box" id="solution_${q.id}" style="display: none;">
+          <div class="explanation-section">
+            <div class="section-badge">💡 GIẢI THÍCH TẠI SAO DÙNG:</div>
+            <div class="explanation-text">${q.explanation}</div>
+          </div>
+          <div class="translation-section">
+            <div class="section-badge">🇻🇳 DỊCH NGHĨA CHI TIẾT:</div>
+            <div class="translation-text">${q.translation}</div>
+          </div>
+        </div>
+      `;
+
+      questionsContainer.appendChild(card);
+
+      // 2. Create Grid Button in Sidebar
+      const gridBtn = document.createElement("button");
+      gridBtn.type = "button";
+      gridBtn.className = "grid-btn";
+      gridBtn.id = `gridBtn_${q.id}`;
+      gridBtn.textContent = q.id;
+      gridBtn.onclick = () => scrollToQuestion(q.id);
+      questionsGrid.appendChild(gridBtn);
+    });
+
+    updateProgress();
+  }
+
+  window.scrollToQuestion = function(qId) {
+    const el = document.getElementById(`qCard_${qId}`);
+    if (el) {
+      el.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  };
+
+  /* ================= 5. INTERACTION LOGIC ================= */
+  window.selectAnswer = function(qId, key) {
+    if (state.isSubmitted) return;
+
+    state.answers[qId] = key;
+
+    const card = document.getElementById(`qCard_${qId}`);
+    if (card) {
+      const options = card.querySelectorAll(".option-item");
+      options.forEach(opt => opt.classList.remove("selected"));
+    }
+
+    const chosenOpt = document.getElementById(`opt_${qId}_${key}`);
+    if (chosenOpt) {
+      chosenOpt.classList.add("selected");
+      const radio = chosenOpt.querySelector("input[type=radio]");
+      if (radio) radio.checked = true;
+    }
+
+    const gridBtn = document.getElementById(`gridBtn_${qId}`);
+    if (gridBtn) {
+      gridBtn.classList.add("answered");
+    }
+
+    updateProgress();
+  };
+
+  window.toggleFlag = function(qId) {
+    const card = document.getElementById(`qCard_${qId}`);
+    const flagBtn = document.getElementById(`btnFlag_${qId}`);
+    const gridBtn = document.getElementById(`gridBtn_${qId}`);
+
+    if (state.flags.has(qId)) {
+      state.flags.delete(qId);
+      if (card) card.classList.remove("flagged");
+      if (flagBtn) flagBtn.classList.remove("active");
+      if (gridBtn) gridBtn.classList.remove("flagged");
+    } else {
+      state.flags.add(qId);
+      if (card) card.classList.add("flagged");
+      if (flagBtn) flagBtn.classList.add("active");
+      if (gridBtn) gridBtn.classList.add("flagged");
+    }
+  };
+
+  function updateProgress() {
+    const answeredCount = Object.keys(state.answers).length;
+    const total = (typeof questionsData !== "undefined") ? questionsData.length : 40;
+    const percent = Math.round((answeredCount / total) * 100);
+
+    if (progressText) progressText.textContent = `Đã làm: ${answeredCount} / ${total} câu (${percent}%)`;
+    if (progressBarFill) progressBarFill.style.width = `${percent}%`;
+  }
+
+  /* ================= 6. SUBMISSION & RESULTS ================= */
+  window.promptSubmit = function() {
+    if (state.isSubmitted) {
+      alert("Bạn đã hoàn thành và nộp bài thi này rồi.");
+      return;
+    }
+
+    const total = questionsData.length;
+    const answeredCount = Object.keys(state.answers).length;
+    const unansweredCount = total - answeredCount;
+
+    const modalBody = document.getElementById("submitModalBody");
+    if (!modalBody) return;
+
+    if (unansweredCount > 0) {
+      const unansweredIds = [];
+      for (let i = 1; i <= total; i++) {
+        if (!state.answers[i]) unansweredIds.push(i);
+      }
+      modalBody.innerHTML = `
+        <div style="color: #dc2626; font-weight: 700; margin-bottom: 8px;">
+          ⚠️ Bạn còn <strong>${unansweredCount}</strong> câu chưa trả lời!
+        </div>
+        <p>Các câu chưa làm: <strong>${unansweredIds.join(", ")}</strong></p>
+        <p style="margin-top: 10px;">Chỉ sau khi nộp bài bạn mới xem được đáp án đúng, giải thích và bản dịch nghĩa.</p>
+        <p style="margin-top: 6px; font-weight: 600;">Bạn có chắc chắn muốn nộp bài ngay bây giờ?</p>
+      `;
+    } else {
+      modalBody.innerHTML = `
+        <div style="color: #16a34a; font-weight: 700; margin-bottom: 8px;">
+          🎉 Bạn đã hoàn thành tất cả ${total}/${total} câu hỏi!
+        </div>
+        <p>Sau khi nộp bài, hệ thống sẽ chấm điểm và hiển thị toàn bộ đáp án chính xác, giải thích chi tiết và dịch nghĩa.</p>
+        <p style="margin-top: 10px; font-weight: 600;">Bạn có muốn nộp bài để xem kết quả?</p>
+      `;
+    }
+
+    if (submitConfirmModal) submitConfirmModal.classList.add("open");
+  };
+
+  window.closeSubmitModal = function() {
+    if (submitConfirmModal) submitConfirmModal.classList.remove("open");
+  };
+
+  window.confirmSubmit = function() {
+    closeSubmitModal();
+    submitExam(false);
+  };
+
+  function submitExam(autoSubmit = false) {
+    state.isSubmitted = true;
+    state.endTime = Date.now();
+    clearInterval(state.timerInterval);
+
+    const totalDurationSeconds = Math.max(1, (40 * 60) - state.remainingSeconds);
+    const durationMins = Math.floor(totalDurationSeconds / 60);
+    const durationSecs = totalDurationSeconds % 60;
+    const timeFormatted = `${durationMins} phút ${durationSecs} giây`;
+
+    let correctCount = 0;
+    questionsData.forEach(q => {
+      if (state.answers[q.id] === q.correct) {
+        correctCount++;
+      }
+    });
+
+    const total = questionsData.length;
+    const wrongCount = total - correctCount;
+    const scale10 = ((correctCount / total) * 10).toFixed(1);
+    const percentage = Math.round((correctCount / total) * 100);
+
+    let rating = "";
+    if (scale10 >= 9.0) rating = "Xuất sắc 🌟";
+    else if (scale10 >= 8.0) rating = "Giỏi 🎯";
+    else if (scale10 >= 6.5) rating = "Khá 👍";
+    else if (scale10 >= 5.0) rating = "Trung bình 📚";
+    else rating = "Cần cố gắng rèn luyện thêm ✍️";
+
+    if (scoreRawEl) scoreRawEl.textContent = `${correctCount}/${total}`;
+    if (scoreScale10El) scoreScale10El.textContent = `Điểm hệ 10: ${scale10} / 10`;
+    if (scorePercentageEl) scorePercentageEl.textContent = `${percentage}%`;
+    if (timeTakenEl) timeTakenEl.textContent = timeFormatted;
+    if (scoreRatingEl) scoreRatingEl.textContent = rating;
+    if (correctCountEl) correctCountEl.textContent = `${correctCount} câu`;
+    if (wrongCountEl) wrongCountEl.textContent = `${wrongCount} câu`;
+
+    if (resultsSummaryCard) resultsSummaryCard.style.display = "block";
+    if (reviewFilterBar) reviewFilterBar.style.display = "flex";
+
+    const headerSubmitBtn = document.getElementById("btnHeaderSubmit");
+    if (headerSubmitBtn) {
+      headerSubmitBtn.textContent = "✓ Đã nộp bài";
+      headerSubmitBtn.style.background = "#10b981";
+      headerSubmitBtn.disabled = true;
+    }
+
+    const sidebarSubmitBtn = document.getElementById("btnSidebarSubmit");
+    if (sidebarSubmitBtn) {
+      sidebarSubmitBtn.textContent = "✓ Đã nộp bài";
+      sidebarSubmitBtn.style.background = "#10b981";
+      sidebarSubmitBtn.disabled = true;
+    }
+
+    questionsData.forEach(q => {
+      const qId = q.id;
+      const userChoice = state.answers[qId];
+      const isCorrect = (userChoice === q.correct);
+
+      const card = document.getElementById(`qCard_${qId}`);
+      const statusTag = document.getElementById(`statusTag_${qId}`);
+      const solutionBox = document.getElementById(`solution_${qId}`);
+      const gridBtn = document.getElementById(`gridBtn_${qId}`);
+
+      if (solutionBox) solutionBox.style.display = "block";
+
+      if (card) {
+        if (isCorrect) {
+          card.classList.add("correct-card");
+          if (statusTag) {
+            statusTag.className = "question-status-tag correct";
+            statusTag.textContent = "ĐÚNG ✓";
+          }
+          if (gridBtn) {
+            gridBtn.className = "grid-btn grid-correct";
+          }
+        } else {
+          card.classList.add("incorrect-card");
+          if (statusTag) {
+            statusTag.className = "question-status-tag incorrect";
+            statusTag.textContent = userChoice ? "SAI ✗" : "CHƯA TRẢ LỜI ✗";
+          }
+          if (gridBtn) {
+            gridBtn.className = "grid-btn grid-incorrect";
+          }
+        }
+      }
+
+      Object.keys(q.options).forEach(key => {
+        const optEl = document.getElementById(`opt_${qId}_${key}`);
+        if (!optEl) return;
+
+        if (key === q.correct) {
+          optEl.classList.add("option-correct");
+        }
+        if (userChoice === key && key !== q.correct) {
+          optEl.classList.add("option-wrong-choice");
+        }
+      });
+    });
+
+    saveSubmissionHistory({
+      name: state.student.name || "Ẩn danh",
+      id: state.student.id || "N/A",
+      classroom: state.student.classroom || "N/A",
+      score: `${correctCount}/${total}`,
+      scale10: scale10,
+      time: timeFormatted,
+      date: new Date().toLocaleString("vi-VN")
+    });
+
+    if (resultsSummaryCard) {
+      resultsSummaryCard.scrollIntoView({ behavior: "smooth", block: "center" });
+    }
+  }
+
+  /* ================= 7. FILTERING REVIEW QUESTIONS ================= */
+  window.filterQuestions = function(mode) {
+    state.filterMode = mode;
+
+    document.querySelectorAll(".filter-pill").forEach(pill => {
+      pill.classList.remove("active");
+    });
+    const activePill = document.getElementById(`filter_${mode}`);
+    if (activePill) activePill.classList.add("active");
+
+    questionsData.forEach(q => {
+      const card = document.getElementById(`qCard_${q.id}`);
+      if (!card) return;
+      const isCorrect = (state.answers[q.id] === q.correct);
+
+      if (mode === 'all') {
+        card.style.display = "block";
+      } else if (mode === 'correct') {
+        card.style.display = isCorrect ? "block" : "none";
+      } else if (mode === 'incorrect') {
+        card.style.display = !isCorrect ? "block" : "none";
+      }
+    });
+  };
+
+  /* ================= 8. RETAKE, EXPORT & PRINT ================= */
+  window.retakeQuiz = function() {
+    if (confirm("Bạn có chắc chắn muốn làm lại bài thi từ đầu? Toàn bộ kết quả hiện tại sẽ được đặt lại.")) {
+      state.answers = {};
+      state.flags.clear();
+      state.isSubmitted = false;
+      state.remainingSeconds = 40 * 60;
+      state.filterMode = 'all';
+
+      if (resultsSummaryCard) resultsSummaryCard.style.display = "none";
+      if (reviewFilterBar) reviewFilterBar.style.display = "none";
+
+      const headerSubmitBtn = document.getElementById("btnHeaderSubmit");
+      if (headerSubmitBtn) {
+        headerSubmitBtn.textContent = "Nộp bài";
+        headerSubmitBtn.style.background = "var(--tdc-orange)";
+        headerSubmitBtn.disabled = false;
+      }
+
+      const sidebarSubmitBtn = document.getElementById("btnSidebarSubmit");
+      if (sidebarSubmitBtn) {
+        sidebarSubmitBtn.textContent = "NỘP BÀI";
+        sidebarSubmitBtn.style.background = "var(--tdc-orange)";
+        sidebarSubmitBtn.disabled = false;
+      }
+
+      renderQuestions();
+      startTimer();
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+  };
+
+  window.printResults = function() {
+    window.print();
+  };
+
+  window.exportResultsCSV = function() {
+    let correctCount = 0;
+    questionsData.forEach(q => {
+      if (state.answers[q.id] === q.correct) correctCount++;
+    });
+
+    const total = questionsData.length;
+    const scale10 = ((correctCount / total) * 10).toFixed(1);
+
+    const rows = [
+      ["BẢNG KẾT QUẢ KIỂM TRA ENGLISH 2 - EXCHANGE"],
+      ["Trường Cao đẳng Công nghệ Thủ Đức (TDC)"],
+      [""],
+      ["Họ và tên", state.student.name || "N/A"],
+      ["Mã số sinh viên", state.student.id || "N/A"],
+      ["Lớp", state.student.classroom || "N/A"],
+      ["Điểm số", `${correctCount}/${total}`],
+      ["Điểm hệ 10", scale10],
+      ["Thời gian nộp bài", new Date().toLocaleString("vi-VN")],
+      [""],
+      ["Câu hỏi", "Lựa chọn của SV", "Đáp án đúng", "Kết quả"]
+    ];
+
+    questionsData.forEach(q => {
+      const userChoice = state.answers[q.id] || "Chưa làm";
+      const isCorrect = (userChoice === q.correct) ? "ĐÚNG" : "SAI";
+      rows.push([`Câu ${q.id}`, userChoice, q.correct, isCorrect]);
+    });
+
+    const csvContent = "\uFEFF" + rows.map(e => e.map(item => `"${item}"`).join(",")).join("\n");
+    const blob = new Blob([csvContent], { type: "text/csv;charset=utf-8;" });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement("a");
+    const safeName = (state.student.name || "SinhVien").replace(/\s+/g, "_");
+    link.setAttribute("href", url);
+    link.setAttribute("download", `KetQua_TA2_${safeName}_${Date.now()}.csv`);
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
+  /* ================= 9. TEACHER & ADMIN MODAL ================= */
+  function saveSubmissionHistory(record) {
+    try {
+      const list = JSON.parse(safeStorage.getItem("tdc_submissions_history", "[]"));
+      list.unshift(record);
+      safeStorage.setItem("tdc_submissions_history", JSON.stringify(list.slice(0, 50)));
+    } catch (e) {}
+  }
+
+  window.openTeacherModal = function() {
+    const totalViews = state.visitorCount || safeStorage.getItem("tdc_cached_visits", 1);
+    const adminTotal = document.getElementById("teacherVisitorTotal");
+    if (adminTotal) adminTotal.textContent = totalViews;
+
+    const historyList = JSON.parse(safeStorage.getItem("tdc_submissions_history", "[]"));
+    const container = document.getElementById("teacherSubmissionsList");
+
+    if (container) {
+      if (historyList.length === 0) {
+        container.innerHTML = `<p style="color: #64748b; font-style: italic;">Chưa có lượt nộp bài nào được lưu trên thiết bị này.</p>`;
+      } else {
+        container.innerHTML = historyList.map((item, idx) => `
+          <div style="padding: 8px 12px; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 6px; margin-bottom: 6px; font-size: 0.85rem;">
+            <strong>#${idx + 1} - ${item.name}</strong> (${item.id} - ${item.classroom}): 
+            <span style="color: #15803d; font-weight: 700;">${item.score} (${item.scale10}đ)</span> 
+            - <span style="color: #64748b;">${item.date}</span>
+          </div>
+        `).join("");
+      }
+    }
+
+    if (teacherModal) teacherModal.classList.add("open");
+  };
+
+  window.closeTeacherModal = function() {
+    if (teacherModal) teacherModal.classList.remove("open");
+  };
+
+  /* ================= INITIALIZATION ================= */
+  initVisitorCounter();
+  updateStudentDisplay();
+  renderQuestions();
+  updateTimerDisplay();
+  startTimer();
+});
+
+  </script>
 </body>
 </html>
